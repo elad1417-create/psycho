@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>פסיכומטרי – כמותי בעל פה</title>
+<meta name="description" content="כל מה שצריך לדעת בעל פה לחלק הכמותי בפסיכומטרי">
+<meta name="theme-color" content="#0b0a08">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0a08; --panel:#15130f; --panel2:#1d1a14; --line:#2e2a20;
+  --gold:#d4af5f; --gold2:#f0d58a; --ink:#f3ead2; --muted:#b5aa8f; --trap:#e0866b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,system-ui,sans-serif;font-size:17px;line-height:1.7}
+a{color:var(--gold2)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+header.hero{padding:44px 0 26px;text-align:center;border-bottom:1px solid var(--line);
+  background:radial-gradient(ellipse at top,#2a2316 0%,#14110b 55%,transparent 80%)}
+.hero .kicker{color:var(--gold);letter-spacing:.18em;font-size:13px;font-weight:700}
+.hero h1{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:clamp(34px,9vw,54px);line-height:1.1;margin:10px 0 12px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--muted);margin:0 auto;max-width:520px}
+.rule{width:70px;height:3px;background:var(--gold);margin:18px auto 0;border-radius:2px}
+.progress{margin:18px auto 0;max-width:340px;font-size:14px;color:var(--muted)}
+.bar{height:6px;background:var(--panel2);border-radius:4px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .4s}
+
+nav.toc{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:24px 0 10px}
+@media(min-width:600px){nav.toc{grid-template-columns:repeat(3,1fr)}}
+nav.toc a{display:flex;gap:8px;align-items:center;padding:11px 12px;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;text-decoration:none;color:var(--ink);font-size:15px;font-weight:500}
+nav.toc a b{color:var(--gold);font-family:"Frank Ruhl Libre",serif;font-size:18px;min-width:22px}
+nav.toc a.done{border-color:var(--gold)}
+nav.toc a.done::after{content:"";margin-inline-start:auto;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+section.ch{margin-top:34px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 18px 18px;scroll-margin-top:12px}
+section.ch>h2{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:28px;margin:0 0 4px;line-height:1.2}
+section.ch>h2 small{color:var(--gold);font-size:18px;margin-inline-end:8px}
+.lead{color:var(--muted);margin:0 0 6px}
+h3{color:var(--gold2);font-size:19px;margin:22px 0 8px;font-weight:800}
+ul,ol{padding-inline-start:22px;margin:6px 0}
+li{margin:5px 0}
+li::marker{color:var(--gold)}
+strong{color:#fff}
+.f{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.05em;color:var(--gold2);white-space:nowrap}
+.formula{direction:ltr;text-align:center;margin:12px 0;padding:14px 12px;background:#0f0d0a;border:1px solid var(--line);border-inline-start:3px solid var(--gold);
+  border-radius:10px;font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:21px;color:var(--gold2);overflow-x:auto;white-space:nowrap}
+.formula + .say{margin-top:-4px}
+.say{color:var(--muted);font-size:15px;text-align:center;margin-bottom:10px}
+.trap{background:rgba(224,134,107,.08);border:1px solid rgba(224,134,107,.35);border-radius:10px;padding:10px 12px;margin:10px 0}
+.trap::before{content:"מלכודת";display:inline-block;background:var(--trap);color:#1a0f0a;font-weight:800;font-size:12px;padding:1px 8px;border-radius:6px;margin-inline-end:8px}
+.tip{background:rgba(212,175,95,.08);border:1px solid rgba(212,175,95,.35);border-radius:10px;padding:10px 12px;margin:10px 0}
+.tip::before{content:"טיפ";display:inline-block;background:var(--gold);color:#1a1408;font-weight:800;font-size:12px;padding:1px 8px;border-radius:6px;margin-inline-end:8px}
+.tbl{overflow-x:auto;margin:10px 0;border-radius:10px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--gold);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n{direction:ltr;text-align:center;white-space:nowrap;color:var(--gold2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;direction:ltr;justify-content:flex-end}
+.chips span{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:15px;color:var(--gold2)}
+.grid2{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:600px){.grid2{grid-template-columns:1fr 1fr}}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.card h4{margin:0 0 4px;font-size:18px;color:var(--gold2)}
+.card ul{margin:0}
+.donebtn{margin-top:18px;width:100%;padding:12px;border-radius:12px;border:1px solid var(--gold);background:transparent;color:var(--gold2);
+  font:700 16px Heebo,sans-serif;cursor:pointer}
+.donebtn.on{background:var(--gold);color:#1a1408}
+.top{position:fixed;bottom:18px;left:16px;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#1a1408;border:0;
+  font:800 20px Heebo;box-shadow:0 6px 20px rgba(0,0,0,.5);display:none;cursor:pointer}
+.top.show{display:block}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="kicker">פסיכומטרי · חלק כמותי</div>
+    <h1>כל מה שצריך<br><span>לדעת בעל פה</span></h1>
+    <p>16 פרקים קצרים: נוסחאות, תכונות, דוגמאות ומלכודות. מומלץ פרק אחד ביום, ובסופו לנסות לכתוב את הכללים מהזיכרון.</p>
+    <div class="rule"></div>
+    <div class="progress"><span id="ptext">0 מתוך 16 פרקים</span><div class="bar"><i id="pbar"></i></div></div>
+  </div>
+</header>
+
+<main class="wrap">
+<nav class="toc" id="toc"></nav>
+
+<section class="ch" id="c1" data-t="מספרים">
+<h2><small>01</small>מספרים וחשבון בסיסי</h2>
+<p class="lead">רוב המלכודות כאן קשורות ל-0, ל-1 ולמספרים שליליים.</p>
+<h3>סוגי מספרים</h3>
+<ul>
+<li><strong>טבעיים:</strong> 1, 2, 3 וכו'. <strong>שלמים:</strong> כל המספרים בלי שבר, כולל 0 ושליליים.</li>
+<li><strong>עוקבים:</strong> מספרים ברצף, למשל 7, 8, 9. שלושה עוקבים: <span class="f">n, n+1, n+2</span>.</li>
+</ul>
+<div class="trap">0 הוא מספר זוגי. הוא לא חיובי ולא שלילי.</div>
+<h3>מספרים ראשוניים</h3>
+<p>מספר ראשוני מתחלק רק ב-1 ובעצמו.</p>
+<div class="chips"><span>2</span><span>3</span><span>5</span><span>7</span><span>11</span><span>13</span><span>17</span><span>19</span><span>23</span><span>29</span><span>31</span><span>37</span><span>41</span><span>43</span><span>47</span><span>53</span><span>59</span><span>61</span><span>67</span><span>71</span><span>73</span><span>79</span><span>83</span><span>89</span><span>97</span></div>
+<div class="trap">1 הוא לא ראשוני. 2 הוא הראשוני הזוגי היחיד.</div>
+<p><strong>פירוק לגורמים ראשוניים:</strong> כל מספר הוא מכפלה של ראשוניים. למשל <span class="f">60 = 2² × 3 × 5</span>.</p>
+<h3>זוגי ואי-זוגי</h3>
+<div class="tbl"><table><tr><th>פעולה</th><th>תוצאה</th></tr>
+<tr><td>זוגי + זוגי</td><td>זוגי</td></tr>
+<tr><td>אי-זוגי + אי-זוגי</td><td>זוגי</td></tr>
+<tr><td>זוגי + אי-זוגי</td><td>אי-זוגי</td></tr>
+<tr><td>זוגי × כל מספר</td><td>זוגי</td></tr>
+<tr><td>אי-זוגי × אי-זוגי</td><td>אי-זוגי</td></tr></table></div>
+<p>בחיסור הכללים זהים לחיבור.</p>
+<h3>סימנים</h3>
+<ul><li>מינוס × מינוס = פלוס. מינוס × פלוס = מינוס.</li>
+<li>מספר זוגי של גורמים שליליים במכפלה נותן תוצאה חיובית.</li></ul>
+<h3>סימני התחלקות</h3>
+<div class="tbl"><table><tr><th>מתחלק ב-</th><th>הכלל</th><th>דוגמה</th></tr>
+<tr><td class="n">2</td><td>הספרה האחרונה זוגית</td><td class="n">538</td></tr>
+<tr><td class="n">3</td><td>סכום הספרות מתחלק ב-3</td><td class="n">471 (12)</td></tr>
+<tr><td class="n">4</td><td>שתי הספרות האחרונות מתחלקות ב-4</td><td class="n">1,316 (16)</td></tr>
+<tr><td class="n">5</td><td>מסתיים ב-0 או 5</td><td class="n">245</td></tr>
+<tr><td class="n">6</td><td>מתחלק ב-2 וגם ב-3</td><td class="n">114</td></tr>
+<tr><td class="n">8</td><td>שלוש הספרות האחרונות מתחלקות ב-8</td><td class="n">5,120 (120)</td></tr>
+<tr><td class="n">9</td><td>סכום הספרות מתחלק ב-9</td><td class="n">729 (18)</td></tr>
+<tr><td class="n">10</td><td>מסתיים ב-0</td><td class="n">390</td></tr>
+<tr><td class="n">11</td><td>הפרש סכום הספרות במקומות הזוגיים והאי-זוגיים מתחלק ב-11</td><td class="n">2,728</td></tr></table></div>
+<h3>מחלק משותף וכפולה משותפת</h3>
+<ul><li><strong>מחלק משותף מקסימלי:</strong> הגדול ביותר שמחלק את שניהם. ל-12 ו-18: 6.</li>
+<li><strong>כפולה משותפת מינימלית:</strong> הקטנה ביותר ששניהם מחלקים. ל-12 ו-18: 36.</li>
+<li>מחלק משותף × כפולה משותפת = מכפלת שני המספרים (<span class="f">6 × 36 = 12 × 18</span>).</li></ul>
+<h3>שארית</h3>
+<div class="formula">מספר = מנה × מחלק + שארית</div>
+<p>למשל <span class="f">17 = 3 × 5 + 2</span>. השארית תמיד קטנה מהמחלק.</p>
+<h3>סדר פעולות</h3>
+<ol><li>סוגריים</li><li>חזקות ושורשים</li><li>כפל וחילוק, לפי הסדר</li><li>חיבור וחיסור</li></ol>
+</section>
+
+<section class="ch" id="c2" data-t="אחוזים">
+<h2><small>02</small>שברים, אחוזים ועשרוניים</h2>
+<p class="lead">הטבלה הזו חוסכת חישובים כמעט בכל שאלת אחוזים. כדאי לדעת אותה בעל פה.</p>
+<div class="tbl"><table><tr><th>שבר</th><th>עשרוני</th><th>אחוז</th></tr>
+<tr><td class="n">1/2</td><td class="n">0.5</td><td class="n">50%</td></tr>
+<tr><td class="n">1/3</td><td class="n">0.333</td><td class="n">33.3%</td></tr>
+<tr><td class="n">2/3</td><td class="n">0.667</td><td class="n">66.7%</td></tr>
+<tr><td class="n">1/4</td><td class="n">0.25</td><td class="n">25%</td></tr>
+<tr><td class="n">3/4</td><td class="n">0.75</td><td class="n">75%</td></tr>
+<tr><td class="n">1/5</td><td class="n">0.2</td><td class="n">20%</td></tr>
+<tr><td class="n">2/5</td><td class="n">0.4</td><td class="n">40%</td></tr>
+<tr><td class="n">3/5</td><td class="n">0.6</td><td class="n">60%</td></tr>
+<tr><td class="n">4/5</td><td class="n">0.8</td><td class="n">80%</td></tr>
+<tr><td class="n">1/6</td><td class="n">0.167</td><td class="n">16.7%</td></tr>
+<tr><td class="n">5/6</td><td class="n">0.833</td><td class="n">83.3%</td></tr>
+<tr><td class="n">1/7</td><td class="n">0.143</td><td class="n">≈14.3%</td></tr>
+<tr><td class="n">1/8</td><td class="n">0.125</td><td class="n">12.5%</td></tr>
+<tr><td class="n">3/8</td><td class="n">0.375</td><td class="n">37.5%</td></tr>
+<tr><td class="n">5/8</td><td class="n">0.625</td><td class="n">62.5%</td></tr>
+<tr><td class="n">7/8</td><td class="n">0.875</td><td class="n">87.5%</td></tr>
+<tr><td class="n">1/9</td><td class="n">0.111</td><td class="n">11.1%</td></tr>
+<tr><td class="n">1/10</td><td class="n">0.1</td><td class="n">10%</td></tr>
+<tr><td class="n">1/12</td><td class="n">0.083</td><td class="n">8.33%</td></tr>
+<tr><td class="n">1/16</td><td class="n">0.0625</td><td class="n">6.25%</td></tr>
+<tr><td class="n">1/20</td><td class="n">0.05</td><td class="n">5%</td></tr>
+<tr><td class="n">1/25</td><td class="n">0.04</td><td class="n">4%</td></tr>
+<tr><td class="n">1/50</td><td class="n">0.02</td><td class="n">2%</td></tr></table></div>
+<h3>כללי אחוזים</h3>
+<ul>
+<li><strong>x אחוז מתוך y</strong> = <span class="f">x · y / 100</span>. למשל 15% מ-80 = 12.</li>
+<li><strong>עלייה ב-p%:</strong> מכפילים ב-<span class="f">(1 + p/100)</span>. עלייה של 20% = <span class="f">× 1.2</span>.</li>
+<li><strong>ירידה ב-p%:</strong> מכפילים ב-<span class="f">(1 − p/100)</span>. ירידה של 20% = <span class="f">× 0.8</span>.</li>
+<li><strong>שינויים ברצף מכפילים, לא מחברים.</strong> עלייה של 10% פעמיים = <span class="f">× 1.21</span>, כלומר 21%.</li>
+<li><strong>אחוז סימטרי:</strong> x% מ-y = y% מ-x. 8% מ-50 = 50% מ-8 = 4.</li>
+<li><strong>ריבית דריבית:</strong> <span class="f">סכום × (1 + p/100)ⁿ</span>.</li>
+</ul>
+<div class="trap">עלייה של 20% ואחריה ירידה של 20% לא מחזירה למקום: <span class="f">1.2 × 0.8 = 0.96</span>, ירידה של 4%.</div>
+<div class="trap">הגדלה ב-100% = הכפלה פי 2. הגדלה "פי 3" = עלייה של 200%.</div>
+<div class="formula">אחוז שינוי = (חדש − ישן) / ישן × 100</div>
+<p>תמיד מחלקים בערך <strong>המקורי</strong>. מ-50 ל-60 זו עלייה של 20%, אבל מ-60 ל-50 זו ירידה של 16.7%.</p>
+<h3>שברים</h3>
+<ul>
+<li><strong>חיבור וחיסור:</strong> קודם מכנה משותף.</li>
+<li><strong>כפל:</strong> מונה × מונה, מכנה × מכנה.</li>
+<li><strong>חילוק בשבר:</strong> כופלים בהופכי. <span class="f">3 ÷ (1/4) = 12</span>.</li>
+<li><strong>השוואת שברים:</strong> כפל בהצלבה. a/b מול c/d: משווים a×d ל-b×c.</li>
+</ul>
+<div class="trap">כפל במספר בין 0 ל-1 מקטין. חילוק בו מגדיל.</div>
+</section>
+
+<section class="ch" id="c3" data-t="חזקות">
+<h2><small>03</small>חזקות</h2>
+<p class="lead">תשעה חוקים מכסים כמעט כל שאלה. הם עובדים רק כשהבסיס זהה.</p>
+<div class="tbl"><table><tr><th>חוק</th><th>במילים</th><th>דוגמה</th></tr>
+<tr><td class="n">aᵐ · aⁿ = aᵐ⁺ⁿ</td><td>כפל: מחברים מעריכים</td><td class="n">2³·2⁴ = 2⁷</td></tr>
+<tr><td class="n">aᵐ / aⁿ = aᵐ⁻ⁿ</td><td>חילוק: מחסירים</td><td class="n">5⁶/5² = 5⁴</td></tr>
+<tr><td class="n">(aᵐ)ⁿ = aᵐⁿ</td><td>חזקה של חזקה: כופלים</td><td class="n">(3²)³ = 3⁶</td></tr>
+<tr><td class="n">(ab)ⁿ = aⁿbⁿ</td><td>עוברת לכל גורם</td><td class="n">(2·5)³ = 8·125</td></tr>
+<tr><td class="n">(a/b)ⁿ = aⁿ/bⁿ</td><td>למונה ולמכנה</td><td class="n">(2/3)² = 4/9</td></tr>
+<tr><td class="n">a⁰ = 1</td><td>כל מספר (חוץ מ-0)</td><td class="n">7⁰ = 1</td></tr>
+<tr><td class="n">a⁻ⁿ = 1/aⁿ</td><td>מעריך שלילי = הופכי</td><td class="n">2⁻³ = 1/8</td></tr>
+<tr><td class="n">a^(1/n) = ⁿ√a</td><td>מעריך שבר = שורש</td><td class="n">9^(1/2) = 3</td></tr>
+<tr><td class="n">a^(m/n) = ⁿ√aᵐ</td><td>מונה חזקה, מכנה שורש</td><td class="n">8^(2/3) = 4</td></tr></table></div>
+<h3>מלכודות</h3>
+<div class="trap"><span class="f">(−2)⁴ = 16</span> אבל <span class="f">−2⁴ = −16</span>. בלי סוגריים המינוס לא בחזקה.</div>
+<div class="trap">מספר בין 0 ל-1 <strong>קטן</strong> בחזקה: <span class="f">0.5² = 0.25</span>.</div>
+<div class="trap"><span class="f">aᵐ + aⁿ ≠ aᵐ⁺ⁿ</span>. בחיבור מוציאים גורם משותף: <span class="f">2⁵ + 2⁵ = 2⁶</span>.</div>
+<ul><li>בסיס שלילי בחזקה זוגית = חיובי, בחזקה אי-זוגית = שלילי.</li>
+<li>להשוואת בסיסים שונים מביאים לבסיס משותף: <span class="f">4³ = 2⁶</span>, <span class="f">8² = 2⁶</span>.</li></ul>
+<h3>חזקות לזכור</h3>
+<div class="tbl"><table><tr><th>n</th><th>n²</th><th>n³</th><th>n</th><th>n²</th></tr>
+<tr><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">11</td><td class="n">121</td></tr>
+<tr><td class="n">2</td><td class="n">4</td><td class="n">8</td><td class="n">12</td><td class="n">144</td></tr>
+<tr><td class="n">3</td><td class="n">9</td><td class="n">27</td><td class="n">13</td><td class="n">169</td></tr>
+<tr><td class="n">4</td><td class="n">16</td><td class="n">64</td><td class="n">14</td><td class="n">196</td></tr>
+<tr><td class="n">5</td><td class="n">25</td><td class="n">125</td><td class="n">15</td><td class="n">225</td></tr>
+<tr><td class="n">6</td><td class="n">36</td><td class="n">216</td><td class="n">16</td><td class="n">256</td></tr>
+<tr><td class="n">7</td><td class="n">49</td><td class="n">343</td><td class="n">17</td><td class="n">289</td></tr>
+<tr><td class="n">8</td><td class="n">64</td><td class="n">512</td><td class="n">18</td><td class="n">324</td></tr>
+<tr><td class="n">9</td><td class="n">81</td><td class="n">729</td><td class="n">19</td><td class="n">361</td></tr>
+<tr><td class="n">10</td><td class="n">100</td><td class="n">1,000</td><td class="n">20</td><td class="n">400</td></tr></table></div>
+<ul>
+<li><strong>2:</strong> <span class="f">2, 4, 8, 16, 32, 64, 128, 256, 512, 1024</span></li>
+<li><strong>3:</strong> <span class="f">3, 9, 27, 81, 243, 729</span></li>
+<li><strong>5:</strong> <span class="f">5, 25, 125, 625</span> &nbsp;·&nbsp; וגם <span class="f">25² = 625</span></li>
+<li><strong>10:</strong> 1 עם n אפסים. <span class="f">10⁻² = 0.01</span></li>
+</ul>
+</section>
+
+<section class="ch" id="c4" data-t="שורשים">
+<h2><small>04</small>שורשים</h2>
+<p class="lead">שורש הוא חזקה של חצי, ולכן כל חוקי החזקות תקפים גם כאן.</p>
+<div class="tbl"><table><tr><th>חוק</th><th>דוגמה</th></tr>
+<tr><td class="n">√(ab) = √a · √b</td><td class="n">√50 = 5√2</td></tr>
+<tr><td class="n">√(a/b) = √a / √b</td><td class="n">√(9/4) = 3/2</td></tr>
+<tr><td class="n">√(a²) = |a|</td><td class="n">√((−3)²) = 3</td></tr>
+<tr><td class="n">(√a)² = a</td><td class="n">(√7)² = 7</td></tr>
+<tr><td class="n">∛a = a^(1/3)</td><td class="n">∛27 = 3</td></tr></table></div>
+<div class="trap"><span class="f">√a + √b ≠ √(a+b)</span>. למשל <span class="f">√9 + √16 = 7</span> אבל <span class="f">√25 = 5</span>.</div>
+<ul>
+<li>שורש של מספר חיובי הוא תמיד חיובי: <span class="f">√16 = 4</span> בלבד.</li>
+<li>אין שורש ריבועי למספר שלילי. שורש שלישי כן: <span class="f">∛(−8) = −2</span>.</li>
+<li>מספר בין 0 ל-1 <strong>גדל</strong> כשמוציאים שורש: <span class="f">√0.25 = 0.5</span>.</li>
+<li><strong>שורש במכנה:</strong> כופלים מונה ומכנה בשורש: <span class="f">1/√2 = √2/2</span>.</li>
+</ul>
+<h3>ערכים לזכור</h3>
+<div class="tbl"><table><tr><th>שורש</th><th>ערך</th></tr>
+<tr><td class="n">√2</td><td class="n">1.41</td></tr><tr><td class="n">√3</td><td class="n">1.73</td></tr>
+<tr><td class="n">√5</td><td class="n">2.24</td></tr><tr><td class="n">√10</td><td class="n">3.16</td></tr>
+<tr><td class="n">π</td><td class="n">3.14</td></tr></table></div>
+<div class="tip">להערכת שורש מוצאים בין אילו ריבועים הוא נמצא. <span class="f">√50</span> בין 7 ל-8, קרוב ל-7.</div>
+</section>
+
+<section class="ch" id="c5" data-t="אלגברה">
+<h2><small>05</small>אלגברה</h2>
+<p class="lead">שלוש נוסחאות הכפל המקוצר הן הכלי הכי שימושי בפרק.</p>
+<h3>כפל מקוצר</h3>
+<div class="formula">(a + b)² = a² + 2ab + b²</div>
+<div class="formula">(a − b)² = a² − 2ab + b²</div>
+<div class="formula">(a + b)(a − b) = a² − b²</div>
+<div class="tip">חישוב בראש: <span class="f">49 × 51 = 50² − 1 = 2,499</span>. וגם <span class="f">31² = 900 + 60 + 1 = 961</span>.</div>
+<h3>משוואה ריבועית <span class="f">ax² + bx + c = 0</span></h3>
+<div class="formula">x = (−b ± √(b² − 4ac)) / 2a</div>
+<ul><li>סכום הפתרונות = <span class="f">−b/a</span>. מכפלת הפתרונות = <span class="f">c/a</span>.</li>
+<li>לרוב מהיר יותר לפרק: <span class="f">x² − 5x + 6 = (x−2)(x−3)</span>, הפתרונות 2 ו-3.</li></ul>
+<div class="trap">אסור לחלק את שני הצדדים ב-x. כך מאבדים את הפתרון <span class="f">x = 0</span>.</div>
+<h3>מערכת משוואות</h3>
+<ul><li><strong>הצבה:</strong> מבודדים נעלם ומציבים במשוואה השנייה.</li>
+<li><strong>חיבור:</strong> מחברים או מחסירים משוואות כדי שנעלם ייעלם.</li></ul>
+<div class="tip">אם שואלים על <span class="f">x + y</span> ולא על כל נעלם, לפעמים מספיק לחבר את המשוואות.</div>
+<h3>אי-שוויונות</h3>
+<div class="trap">כפל או חילוק במספר שלילי הופך את הסימן: <span class="f">−2x &gt; 6 ⇒ x &lt; −3</span>.</div>
+<h3>ערך מוחלט</h3>
+<p>המרחק מ-0, ולכן תמיד חיובי או 0: <span class="f">|−5| = 5</span>.</p>
+<ul><li><span class="f">|x| = a ⇒ x = a</span> או <span class="f">x = −a</span></li>
+<li><span class="f">|x| &lt; a ⇒ −a &lt; x &lt; a</span></li>
+<li><span class="f">|x| &gt; a ⇒ x &gt; a</span> או <span class="f">x &lt; −a</span></li></ul>
+<h3>יחס ופרופורציה</h3>
+<ul><li>אם <span class="f">a:b = 2:3</span> כותבים <span class="f">a = 2k, b = 3k</span>. השלם הוא 5k, החלק של a הוא 2/5.</li>
+<li><strong>ישרה:</strong> פי 2 פועלים = פי 2 עבודה. <strong>הפוכה:</strong> פי 2 פועלים = חצי מהזמן.</li></ul>
+</section>
+
+<section class="ch" id="c6" data-t="בעיות מילוליות">
+<h2><small>06</small>בעיות מילוליות</h2>
+<p class="lead">בכל סוג בעיה יש נוסחה אחת עם שלושה גדלים. כשיודעים שניים, מוצאים את השלישי.</p>
+<h3>תנועה</h3>
+<div class="formula">דרך = מהירות × זמן</div>
+<ul>
+<li><strong>מהירות ממוצעת</strong> = הדרך הכוללת / הזמן הכולל.</li>
+<li><strong>זה לקראת זה:</strong> מחברים מהירויות. זמן פגישה = מרחק / סכום המהירויות.</li>
+<li><strong>אותו כיוון:</strong> מחסירים מהירויות. זמן השגה = פער / הפרש המהירויות.</li>
+<li><strong>המרה:</strong> קמ"ש ÷ 3.6 = מטר לשנייה. 20 דקות = 1/3 שעה.</li>
+</ul>
+<div class="trap">מהירות ממוצעת היא לא ממוצע המהירויות. הלוך ב-60 וחזרה ב-40 נותן 48 קמ"ש, לא 50.</div>
+<h3>הספק (עבודה)</h3>
+<div class="formula">עבודה = הספק × זמן</div>
+<ul><li>עבודה שלמה = 1. מי שמסיים ב-t שעות עושה <span class="f">1/t</span> בשעה.</li>
+<li><strong>עובדים יחד:</strong> מחברים הספקים, לא זמנים.</li></ul>
+<div class="formula">1/T = 1/t₁ + 1/t₂</div>
+<p>דוגמה: 3 שעות ו-6 שעות. יחד: <span class="f">1/3 + 1/6 = 1/2</span>, כלומר שעתיים.</p>
+<ul><li>ברז ממלא וברז מרוקן: מחסירים את הספק הריקון.</li></ul>
+<h3>תערובות</h3>
+<ul><li>כמות החומר = אחוז הריכוז × הכמות הכוללת.</li>
+<li>כשמערבבים: מחברים כמויות חומר וכמויות כוללות בנפרד ומחלקים. לא מחברים אחוזים.</li></ul>
+<h3>גילאים וכסף</h3>
+<ul><li>הפרש הגילאים קבוע תמיד. בעוד k שנים כל אחד מבוגר ב-k.</li>
+<li>מחיר כולל = מחיר ליחידה × יחידות. רווח = הכנסה − הוצאה.</li></ul>
+</section>
+
+<section class="ch" id="c7" data-t="סטטיסטיקה">
+<h2><small>07</small>סטטיסטיקה</h2>
+<p class="lead">הנוסחה הכי שימושית: סכום = ממוצע × מספר האיברים.</p>
+<div class="formula">ממוצע = סכום / מספר איברים</div>
+<ul>
+<li>הוספת איבר ששווה לממוצע לא משנה אותו.</li>
+<li>הוספת מספר קבוע לכל האיברים מעלה את הממוצע באותו מספר. כפל בקבוע מכפיל אותו.</li>
+<li>הממוצע תמיד בין הקטן לגדול.</li>
+</ul>
+<div class="tip">ממוצע 4 מספרים הוא 10, ואחרי הוספת מספר חמישי הוא 12. הסכום עלה מ-40 ל-60, ולכן המספר החמישי הוא 20.</div>
+<h3>ממוצע משוקלל</h3>
+<div class="formula">Σ(ערך × משקל) / Σ(משקלים)</div>
+<p>10 תלמידים עם 80 ו-30 עם 60: <span class="f">(800 + 1800) / 40 = 65</span>.</p>
+<div class="trap">הממוצע המשוקלל קרוב יותר לקבוצה הגדולה. הוא לא הממוצע של שני הממוצעים.</div>
+<h3>חציון, שכיח וטווח</h3>
+<div class="tbl"><table><tr><th>מדד</th><th>מה זה</th><th>2, 3, 3, 7, 10</th></tr>
+<tr><td>חציון</td><td>ממיינים. אי-זוגי: האמצעי. זוגי: ממוצע שני האמצעיים.</td><td class="n">3</td></tr>
+<tr><td>שכיח</td><td>הערך הנפוץ ביותר</td><td class="n">3</td></tr>
+<tr><td>טווח</td><td>גדול פחות קטן</td><td class="n">8</td></tr>
+<tr><td>ממוצע</td><td>סכום / כמות</td><td class="n">5</td></tr></table></div>
+<div class="trap">שוכחים למיין לפני חציון. שינוי של האיבר הגדול משנה ממוצע וטווח, אבל לא חציון.</div>
+</section>
+
+<section class="ch" id="c8" data-t="הסתברות">
+<h2><small>08</small>קומבינטוריקה והסתברות</h2>
+<p class="lead">השאלה הראשונה תמיד: האם הסדר חשוב, והאם יש החזרה.</p>
+<h3>ספירת אפשרויות</h3>
+<ul><li><strong>עיקרון הכפל:</strong> 3 חולצות ו-4 מכנסיים = 12 שילובים.</li>
+<li><strong>עצרת:</strong> <span class="f">3! = 6, 4! = 24, 5! = 120, 6! = 720, 0! = 1</span></li></ul>
+<div class="tbl"><table><tr><th>מצב</th><th>נוסחה</th><th>דוגמה</th></tr>
+<tr><td>סידור n בשורה</td><td class="n">n!</td><td>4 בתור: 24</td></tr>
+<tr><td>k מתוך n, הסדר חשוב</td><td class="n">n!/(n−k)!</td><td>יו"ר+סגן מ-5: 20</td></tr>
+<tr><td>k מתוך n, הסדר לא חשוב</td><td class="n">n!/(k!(n−k)!)</td><td>ועדה 2 מ-5: 10</td></tr>
+<tr><td>עם החזרה</td><td class="n">nᵏ</td><td>קוד 3 ספרות: 1,000</td></tr>
+<tr><td>שולחן עגול</td><td class="n">(n−1)!</td><td>5 אנשים: 24</td></tr></table></div>
+<div class="tip">2 מתוך n = <span class="f">n(n−1)/2</span>, זה גם מספר לחיצות הידיים בין n אנשים.</div>
+<h3>הסתברות</h3>
+<div class="formula">P = מקרים רצויים / כל המקרים</div>
+<div class="tbl"><table><tr><th>מצב</th><th>מה עושים</th><th>דוגמה</th></tr>
+<tr><td>שלא יקרה</td><td class="n">1 − P</td><td>לא 6 בקובייה: 5/6</td></tr>
+<tr><td>"וגם" (בלתי תלויים)</td><td>כופלים</td><td>עץ פעמיים: 1/4</td></tr>
+<tr><td>"או" (לא יחד)</td><td>מחברים</td><td>1 או 2: 1/3</td></tr>
+<tr><td>"לפחות אחד"</td><td>1 − אף אחד</td><td>עץ ב-3 הטלות: 7/8</td></tr></table></div>
+<ul><li><strong>ללא החזרה:</strong> אחרי כל שליפה יש פריט אחד פחות. 2 אדומים מתוך 3 אדומים ו-2 כחולים: <span class="f">3/5 × 2/4 = 3/10</span>.</li>
+<li><strong>שתי קוביות:</strong> 36 תוצאות. הסכום הנפוץ ביותר הוא 7 (6 מתוך 36).</li>
+<li><strong>מטבע:</strong> n הטלות = <span class="f">2ⁿ</span> תוצאות.</li></ul>
+</section>
+
+<section class="ch" id="c9" data-t="סדרות">
+<h2><small>09</small>סדרות</h2>
+<p class="lead">בחשבונית מוסיפים כל פעם אותו מספר. בהנדסית כופלים כל פעם באותו מספר.</p>
+<h3>סדרה חשבונית (הפרש d)</h3>
+<div class="formula">aₙ = a₁ + (n − 1)d</div>
+<div class="formula">Sₙ = n(a₁ + aₙ) / 2</div>
+<ul><li>סכום 1 עד n = <span class="f">n(n+1)/2</span>. 1 עד 100 = 5,050.</li>
+<li>הממוצע = האיבר האמצעי = ממוצע הראשון והאחרון.</li></ul>
+<div class="trap">מספר המספרים מ-a עד b (כולל) הוא <span class="f">b − a + 1</span>. שוכחים את ה-1.</div>
+<h3>סדרה הנדסית (מנה q)</h3>
+<div class="formula">aₙ = a₁ · qⁿ⁻¹</div>
+<p>למשל 2, 6, 18, 54 (q = 3).</p>
+</section>
+
+<section class="ch" id="c10" data-t="זוויות">
+<h2><small>10</small>זוויות ומצולעים</h2>
+<p class="lead">רוב שאלות הזוויות נפתרות עם 180 על קו ישר ו-360 סביב נקודה.</p>
+<ul><li>חדה &lt; 90° · ישרה = 90° · קהה בין 90° ל-180° · שטוחה = 180° · מלאה = 360°.</li>
+<li><strong>צמודות</strong> (על קו ישר): ביחד 180°. <strong>קודקודיות</strong> (זו מול זו): שוות.</li></ul>
+<h3>שני ישרים מקבילים וחותך</h3>
+<ul><li><strong>מתאימות</strong> (צורת F): שוות.</li>
+<li><strong>מתחלפות</strong> (צורת Z): שוות.</li>
+<li><strong>חד-צדדיות</strong> (צורת C): ביחד 180°.</li></ul>
+<h3>מצולע עם n צלעות</h3>
+<div class="formula">סכום הזוויות = (n − 2) × 180°</div>
+<ul><li>סכום הזוויות החיצוניות = 360° תמיד.</li>
+<li>במצולע משוכלל כל זווית = <span class="f">(n−2)·180/n</span>.</li>
+<li>מספר אלכסונים = <span class="f">n(n−3)/2</span>.</li></ul>
+<div class="tbl"><table><tr><th>מצולע</th><th>סכום</th><th>זווית במשוכלל</th><th>אלכסונים</th></tr>
+<tr><td>משולש</td><td class="n">180°</td><td class="n">60°</td><td class="n">0</td></tr>
+<tr><td>מרובע</td><td class="n">360°</td><td class="n">90°</td><td class="n">2</td></tr>
+<tr><td>מחומש</td><td class="n">540°</td><td class="n">108°</td><td class="n">5</td></tr>
+<tr><td>משושה</td><td class="n">720°</td><td class="n">120°</td><td class="n">9</td></tr>
+<tr><td>מתומן</td><td class="n">1080°</td><td class="n">135°</td><td class="n">20</td></tr></table></div>
+<div class="tip">משושה משוכלל = 6 משולשים שווי צלעות. שטח = <span class="f">6 · a²√3/4</span>.</div>
+</section>
+
+<section class="ch" id="c11" data-t="משולשים">
+<h2><small>11</small>משולשים</h2>
+<p class="lead">הפרק הכי חשוב בגאומטריה. כמעט כל שאלה על מרובע או מעגל מסתיימת במשולש.</p>
+<h3>לכל משולש</h3>
+<ul><li>סכום הזוויות = 180°.</li>
+<li><strong>זווית חיצונית</strong> = סכום שתי הפנימיות שלא צמודות אליה.</li>
+<li><strong>אי-שוויון המשולש:</strong> סכום שתי צלעות גדול מהשלישית. אם הצלעות 3 ו-7, השלישית בין 4 ל-10.</li>
+<li>מול הצלע הגדולה הזווית הגדולה.</li>
+<li>משולשים עם אותו גובה: יחס השטחים = יחס הבסיסים.</li></ul>
+<div class="formula">שטח = בסיס × גובה / 2</div>
+<p class="say">בקהה זווית הגובה יכול לנפול מחוץ למשולש.</p>
+<h3>קטעים מיוחדים</h3>
+<div class="tbl"><table><tr><th>קטע</th><th>מה הוא</th><th>לזכור</th></tr>
+<tr><td>גובה</td><td>מקודקוד באנך לצלע שמולו</td><td>לחישוב שטח</td></tr>
+<tr><td>תיכון</td><td>מקודקוד לאמצע הצלע שמולו</td><td>מחלק לשני משולשים שווי שטח</td></tr>
+<tr><td>חוצה זווית</td><td>מחלק זווית לשתיים שוות</td><td>כל נקודה עליו במרחק שווה משני צדי הזווית</td></tr>
+<tr><td>קטע אמצעים</td><td>מחבר אמצעי שתי צלעות</td><td>מקביל לשלישית ושווה לחציה</td></tr></table></div>
+<h3>סוגי משולשים</h3>
+<div class="grid2">
+<div class="card"><h4>שווה שוקיים</h4><ul><li>שתי צלעות שוות, זוויות הבסיס שוות.</li><li>הגובה לבסיס הוא גם תיכון וגם חוצה זווית.</li></ul></div>
+<div class="card"><h4>שווה צלעות</h4><ul><li>כל הזוויות 60°.</li><li>גובה = <span class="f">a√3/2</span>. שטח = <span class="f">a²√3/4</span>.</li></ul></div>
+<div class="card"><h4>ישר זווית</h4><ul><li>שתי הזוויות האחרות ביחד 90°.</li><li>היתר (מול 90°) הוא הצלע הגדולה.</li></ul></div>
+<div class="card"><h4>ישר זווית שווה שוקיים</h4><ul><li>זוויות 45-45-90.</li><li>חצי ריבוע שנחתך באלכסון.</li></ul></div>
+</div>
+<h3>משולש ישר זווית</h3>
+<div class="formula">a² + b² = c²</div>
+<p class="say">פיתגורס: ניצב² + ניצב² = יתר²</p>
+<ul><li>שטח = ניצב × ניצב / 2.</li>
+<li>התיכון ליתר = חצי מהיתר.</li>
+<li>הגובה ליתר = ניצב × ניצב / יתר.</li></ul>
+<div class="tbl"><table><tr><th>זוויות</th><th>יחס צלעות</th><th>לזכור</th></tr>
+<tr><td class="n">30-60-90</td><td class="n">x : x√3 : 2x</td><td>מול 30° = חצי יתר</td></tr>
+<tr><td class="n">45-45-90</td><td class="n">x : x : x√2</td><td>יתר = ניצב × √2</td></tr></table></div>
+<p><strong>שלשות פיתגוריות</strong> (וכל הכפולות שלהן, כמו 6-8-10):</p>
+<div class="chips"><span>3-4-5</span><span>5-12-13</span><span>8-15-17</span><span>7-24-25</span></div>
+<h3>חפיפה ודמיון</h3>
+<ul><li><strong>חפיפה</strong> (זהים לגמרי): צ.צ.צ · צ.ז.צ · ז.צ.ז · צ.צ.ז (כשהזווית מול הצלע הגדולה).</li>
+<li><strong>דמיון</strong> (אותה צורה, גודל אחר): מספיק ששתי זוויות שוות.</li>
+<li>יחס צלעות k ⇒ יחס היקפים k, יחס שטחים <span class="f">k²</span>, יחס נפחים <span class="f">k³</span>.</li></ul>
+<div class="trap">צלעות פי 2 ⇒ שטח פי 4, לא פי 2.</div>
+</section>
+
+<section class="ch" id="c12" data-t="מרובעים">
+<h2><small>12</small>מרובעים</h2>
+<p class="lead">סכום הזוויות 360°. מלבן, מעוין וריבוע הם סוגים של מקבילית, ולכן כל תכונות המקבילית נכונות גם להם.</p>
+<div class="grid2">
+<div class="card"><h4>מקבילית</h4><ul><li>צלעות נגדיות מקבילות ושוות.</li><li>זוויות נגדיות שוות, סמוכות = 180°.</li><li><strong>אלכסונים:</strong> חוצים זה את זה.</li><li><strong>שטח:</strong> בסיס × גובה.</li></ul></div>
+<div class="card"><h4>מלבן</h4><ul><li>מקבילית עם 4 זוויות של 90°.</li><li><strong>אלכסונים:</strong> שווים וחוצים. אורך <span class="f">√(a²+b²)</span>.</li><li><strong>שטח:</strong> a×b. <strong>היקף:</strong> 2(a+b).</li></ul></div>
+<div class="card"><h4>מעוין</h4><ul><li>מקבילית עם 4 צלעות שוות.</li><li><strong>אלכסונים:</strong> מאונכים, חוצים זה את זה וחוצים את הזוויות. לא שווים.</li><li><strong>שטח:</strong> אלכסון × אלכסון / 2.</li></ul></div>
+<div class="card"><h4>ריבוע</h4><ul><li>גם מלבן וגם מעוין.</li><li><strong>אלכסונים:</strong> שווים, מאונכים, חוצים, 45° עם הצלעות. אורך <span class="f">a√2</span>.</li><li><strong>שטח:</strong> a², או אלכסון²/2.</li></ul></div>
+<div class="card"><h4>טרפז</h4><ul><li>רק זוג אחד מקביל (בסיסים).</li><li>זוויות ליד אותה שוק = 180°.</li><li><strong>קטע אמצעים:</strong> (בסיס+בסיס)/2.</li><li><strong>שטח:</strong> <span class="f">(a+b)·h/2</span>.</li></ul></div>
+<div class="card"><h4>טרפז שווה שוקיים</h4><ul><li>שוקיים שוות, זוויות בסיס שוות.</li><li>זוויות נגדיות = 180°.</li><li><strong>אלכסונים:</strong> שווים.</li><li>שני גבהים יוצרים מלבן באמצע ושני משולשים חופפים בצדדים.</li></ul></div>
+<div class="card"><h4>דלתון</h4><ul><li>שני זוגות צלעות סמוכות שוות.</li><li>זוג זוויות נגדיות שוות.</li><li><strong>אלכסונים:</strong> מאונכים. הראשי חוצה את השני.</li><li><strong>שטח:</strong> אלכסון × אלכסון / 2.</li></ul></div>
+</div>
+<h3>האלכסונים בקצרה</h3>
+<div class="tbl"><table><tr><th>מרובע</th><th>חוצים</th><th>שווים</th><th>מאונכים</th></tr>
+<tr><td>מקבילית</td><td>כן</td><td>לא</td><td>לא</td></tr>
+<tr><td>מלבן</td><td>כן</td><td>כן</td><td>לא</td></tr>
+<tr><td>מעוין</td><td>כן</td><td>לא</td><td>כן</td></tr>
+<tr><td>ריבוע</td><td>כן</td><td>כן</td><td>כן</td></tr>
+<tr><td>טרפז ש"ש</td><td>לא</td><td>כן</td><td>לא</td></tr>
+<tr><td>דלתון</td><td>אחד את השני</td><td>לא</td><td>כן</td></tr></table></div>
+</section>
+
+<section class="ch" id="c13" data-t="מעגל">
+<h2><small>13</small>מעגל</h2>
+<p class="lead">המפתח: כל הרדיוסים שווים. משולש ששתי צלעותיו רדיוסים הוא שווה שוקיים.</p>
+<h3>מושגים</h3>
+<ul><li><strong>רדיוס r</strong>: מהמרכז לשפה. <strong>קוטר</strong> = 2r, המיתר הארוך ביותר.</li>
+<li><strong>מיתר</strong>: מחבר שתי נקודות על המעגל. <strong>קשת</strong>: חלק מקו המעגל.</li>
+<li><strong>גזרה</strong>: "משולש פיצה" בין שני רדיוסים וקשת. <strong>משיק</strong>: נוגע בנקודה אחת.</li></ul>
+<h3>נוסחאות</h3>
+<div class="formula">היקף = 2πr</div>
+<div class="formula">שטח = πr²</div>
+<div class="formula">קשת = (α/360) × 2πr</div>
+<div class="formula">גזרה = (α/360) × πr²</div>
+<p class="say">α היא הזווית המרכזית. 90° = רבע מהיקף ורבע מהשטח.</p>
+<div class="trap">רדיוס פי 2 ⇒ היקף פי 2, אבל שטח פי 4.</div>
+<h3>זוויות במעגל</h3>
+<ul><li><strong>מרכזית:</strong> קודקוד במרכז. <strong>היקפית:</strong> קודקוד על המעגל.</li>
+<li>היקפית = חצי מהמרכזית שנשענת על אותה קשת.</li>
+<li>היקפיות על אותה קשת שוות.</li>
+<li>היקפית שנשענת על קוטר = 90°.</li></ul>
+<h3>מיתרים ומשיקים</h3>
+<ul><li>משיק מאונך לרדיוס בנקודת ההשקה.</li>
+<li>שני משיקים מאותה נקודה חיצונית שווים.</li>
+<li>אנך מהמרכז למיתר חוצה אותו.</li>
+<li>מיתרים שווים: במרחק שווה מהמרכז, על קשתות שוות.</li></ul>
+<h3>צורות ומעגלים</h3>
+<ul><li>מרובע חסום במעגל: זוויות נגדיות = 180°.</li>
+<li>ריבוע או מלבן חסום במעגל: האלכסון = הקוטר.</li>
+<li>מעגל חסום בריבוע: הקוטר = צלע הריבוע.</li>
+<li>משולש ישר זווית חסום במעגל: היתר = קוטר.</li></ul>
+</section>
+
+<section class="ch" id="c14" data-t="גופים">
+<h2><small>14</small>גופים: נפח ושטח פנים</h2>
+<p class="lead">נפח = כמה הגוף מכיל. שטח פנים = סכום כל הפאות, כמה נייר צריך כדי לעטוף אותו.</p>
+<div class="tbl"><table><tr><th>גוף</th><th>נפח</th><th>שטח פנים</th></tr>
+<tr><td>קובייה (a)</td><td class="n">a³</td><td class="n">6a²</td></tr>
+<tr><td>תיבה (a,b,c)</td><td class="n">abc</td><td class="n">2(ab+bc+ac)</td></tr>
+<tr><td>מנסרה ישרה</td><td>בסיס × גובה</td><td>היקף בסיס × גובה + 2 בסיסים</td></tr>
+<tr><td>גליל</td><td class="n">πr²h</td><td class="n">2πrh + 2πr²</td></tr>
+<tr><td>חרוט</td><td class="n">πr²h / 3</td><td class="n">πrl + πr²</td></tr>
+<tr><td>פירמידה</td><td>בסיס × גובה / 3</td><td>בסיס + הפאות</td></tr>
+<tr><td>כדור</td><td class="n">4πr³ / 3</td><td class="n">4πr²</td></tr></table></div>
+<h3>אלכסונים ופרטים</h3>
+<ul><li><strong>קובייה:</strong> אלכסון פאה <span class="f">a√2</span>, אלכסון הקובייה <span class="f">a√3</span>.</li>
+<li><strong>תיבה:</strong> אלכסון <span class="f">√(a²+b²+c²)</span>.</li>
+<li>לקובייה ולתיבה: 12 מקצועות, 8 קודקודים, 6 פאות.</li>
+<li><strong>מנסרה</strong> עם בסיס של n צלעות: 3n מקצועות, 2n קודקודים, n+2 פאות.</li>
+<li><strong>פירמידה</strong> עם בסיס של n צלעות: 2n מקצועות, n+1 קודקודים, n+1 פאות.</li>
+<li><strong>חרוט:</strong> הקו היוצר l מהקודקוד לשפת הבסיס, <span class="f">l² = r² + h²</span>.</li>
+<li>מעטפת גליל פרושה = מלבן: היקף המעגל × הגובה.</li></ul>
+<div class="tip">חרוט ופירמידה = שליש מגליל או ממנסרה עם אותו בסיס וגובה.</div>
+<div class="trap">כל הממדים פי 2 ⇒ נפח פי 8, שטח פנים פי 4. בגליל: רדיוס פי 2 ⇒ נפח פי 4, גובה פי 2 ⇒ נפח רק פי 2.</div>
+</section>
+
+<section class="ch" id="c15" data-t="מערכת צירים">
+<h2><small>15</small>גאומטריה אנליטית</h2>
+<p class="lead">נקודה נכתבת (x, y): קודם ימינה או שמאלה, ואז למעלה או למטה.</p>
+<div class="formula">d = √((x₂−x₁)² + (y₂−y₁)²)</div>
+<p class="say">מרחק בין שתי נקודות (פיתגורס)</p>
+<div class="formula">m = (y₂ − y₁) / (x₂ − x₁)</div>
+<p class="say">שיפוע: חיובי עולה, שלילי יורד, 0 אופקי</p>
+<ul><li><strong>אמצע קטע:</strong> <span class="f">((x₁+x₂)/2, (y₁+y₂)/2)</span></li>
+<li><strong>ישר:</strong> <span class="f">y = mx + b</span>, כש-b החיתוך עם ציר y.</li>
+<li><strong>מקבילים:</strong> אותו שיפוע. <strong>מאונכים:</strong> <span class="f">m₁ · m₂ = −1</span> (למשל 2 ו- −½).</li>
+<li><strong>נקודה על ישר:</strong> מציבים. אם השוויון מתקיים, היא על הישר.</li>
+<li>על ציר x: <span class="f">(x, 0)</span>. על ציר y: <span class="f">(0, y)</span>. ישר אנכי <span class="f">x = c</span>, אופקי <span class="f">y = c</span>.</li></ul>
+<div class="tbl"><table><tr><th>רביע</th><th>x</th><th>y</th></tr>
+<tr><td>ראשון (למעלה ימין)</td><td class="n">+</td><td class="n">+</td></tr>
+<tr><td>שני (למעלה שמאל)</td><td class="n">−</td><td class="n">+</td></tr>
+<tr><td>שלישי (למטה שמאל)</td><td class="n">−</td><td class="n">−</td></tr>
+<tr><td>רביעי (למטה ימין)</td><td class="n">+</td><td class="n">−</td></tr></table></div>
+</section>
+
+<section class="ch" id="c16" data-t="חישוב מהיר">
+<h2><small>16</small>יחידות וחישוב מהיר</h2>
+<p class="lead">המרות יחידות ומכפלות מוכרות חוסכות שניות יקרות בכל שאלה.</p>
+<div class="tbl"><table><tr><th>סוג</th><th>המרה</th></tr>
+<tr><td>זמן</td><td>שעה = 60 דקות = 3,600 שניות. 15 דק' = ¼ שעה, 20 דק' = ⅓, 45 דק' = ¾</td></tr>
+<tr><td>אורך</td><td>ק"מ = 1,000 מ'. מטר = 100 ס"מ. ס"מ = 10 מ"מ</td></tr>
+<tr><td>שטח</td><td>מ"ר = 10,000 סמ"ר</td></tr>
+<tr><td>נפח</td><td>מ"ק = 1,000 ליטר. ליטר = 1,000 סמ"ק</td></tr>
+<tr><td>מהירות</td><td>קמ"ש ÷ 3.6 = מ'/שנ'. 36 קמ"ש = 10 מ'/שנ'</td></tr></table></div>
+<div class="trap">בהמרת שטח מעלים את יחס האורך בריבוע, ובנפח בשלישית.</div>
+<h3>מכפלות שימושיות</h3>
+<div class="chips"><span>25 × 4 = 100</span><span>125 × 8 = 1000</span><span>12 × 12 = 144</span><span>15 × 15 = 225</span><span>0.25 = 1/4</span><span>0.125 = 1/8</span></div>
+<h3>טריקים לחישוב בראש</h3>
+<ul>
+<li><strong>× 5</strong> = × 10 ואז ÷ 2. <span class="f">48 × 5 = 240</span></li>
+<li><strong>× 25</strong> = × 100 ואז ÷ 4. <span class="f">36 × 25 = 900</span></li>
+<li><strong>× 9</strong> = × 10 פחות המספר. <span class="f">23 × 9 = 207</span></li>
+<li><strong>× 11</strong> לדו-ספרתי: סכום הספרות באמצע. <span class="f">34 × 11 = 374</span></li>
+<li><strong>ריבוע של מספר שמסתיים ב-5:</strong> עשרות × (עשרות+1), ואז 25. <span class="f">35² = 1225</span></li>
+<li><strong>אחוזים:</strong> 10% = הזזת נקודה, 5% = חצי מזה, 1% = שתי ספרות.</li>
+</ul>
+<h3>טיפים לבחינה</h3>
+<ul><li><strong>הצבת מספרים:</strong> כשהשאלה מלאה באותיות, מציבים מספרים פשוטים ובודקים איזו תשובה מתאימה.</li>
+<li><strong>בדיקה מהתשובות:</strong> לפעמים מהיר יותר להציב כל תשובה בשאלה.</li>
+<li><strong>סרטוטים לא תמיד בקנה מידה.</strong> סומכים רק על הנתונים.</li></ul>
+</section>
+
+<footer>בהצלחה בבחינה</footer>
+</main>
+<button class="top" id="top" aria-label="חזרה למעלה">↑</button>
+<script>
+(function(){
+  var KEY='psycho-done-v1', done={};
+  try{done=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){done={};}
+  var secs=[].slice.call(document.querySelectorAll('section.ch')), toc=document.getElementById('toc');
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(done));}catch(e){}}
+  function render(){
+    var n=0;
+    secs.forEach(function(s,i){
+      var on=!!done[s.id]; if(on)n++;
+      var a=toc.children[i]; a.classList.toggle('done',on);
+      var b=s.querySelector('.donebtn'); b.classList.toggle('on',on);
+      b.textContent=on?'סיימתי את הפרק':'סמני שסיימת את הפרק';
+    });
+    document.getElementById('ptext').textContent=n+' מתוך '+secs.length+' פרקים';
+    document.getElementById('pbar').style.width=(n/secs.length*100)+'%';
+  }
+  secs.forEach(function(s,i){
+    var a=document.createElement('a'); a.href='#'+s.id;
+    a.innerHTML='<b>'+(i+1)+'</b><span>'+s.dataset.t+'</span>'; toc.appendChild(a);
+    var b=document.createElement('button'); b.className='donebtn'; b.type='button';
+    b.onclick=function(){done[s.id]=!done[s.id]; save(); render();};
+    s.appendChild(b);
+  });
+  render();
+  var top=document.getElementById('top');
+  window.addEventListener('scroll',function(){top.classList.toggle('show',window.scrollY>600);},{passive:true});
+  top.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};
+})();
+</script>
+</body>
+</html>
