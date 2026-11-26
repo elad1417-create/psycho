@@ -38,7 +38,7 @@ nav.toc a b{color:var(--gold);font-family:"Frank Ruhl Libre",serif;font-size:18p
 nav.toc a.done{border-color:var(--gold)}
 nav.toc a.done::after{content:"";margin-inline-start:auto;width:8px;height:8px;border-radius:50%;background:var(--gold)}
 
-section.ch{margin-top:34px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 18px 18px;scroll-margin-top:12px}
+section.ch{margin-top:34px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 18px 18px;scroll-margin-top:84px}
 section.ch>h2{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:28px;margin:0 0 4px;line-height:1.2}
 section.ch>h2 small{color:var(--gold);font-size:18px;margin-inline-end:8px}
 .lead{color:var(--muted);margin:0 0 6px}
@@ -76,20 +76,76 @@ td.n{direction:ltr;text-align:center;white-space:nowrap;color:var(--gold2)}
   font:800 20px Heebo;box-shadow:0 6px 20px rgba(0,0,0,.5);display:none;cursor:pointer}
 .top.show{display:block}
 footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
+
+/* ---- mode switch ---- */
+.modebar{position:sticky;top:0;z-index:20;margin:0 -16px;padding:12px 16px 10px;background:rgba(11,10,8,.92);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.seg button{border:0;background:transparent;color:var(--muted);font:700 15px Heebo,sans-serif;padding:10px 6px;border-radius:10px;cursor:pointer}
+.seg button.on{background:var(--gold);color:#1a1408}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin:10px -16px 0;padding:0 16px 2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:500 14px Heebo,sans-serif;
+  padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button.on{border-color:var(--gold);color:var(--gold2);background:#221d12}
+[hidden]{display:none!important}
+
+/* ---- tips panels ---- */
+.pane{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 16px 16px}
+.pane>h2{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:28px;margin:0 0 4px;line-height:1.2}
+.pane>h2 small{display:block;color:var(--gold);font:700 12px Heebo,sans-serif;letter-spacing:.16em;margin-bottom:4px}
+.panehead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:14px 0 6px}
+.panehead span{color:var(--muted);font-size:13px}
+.openall{border:1px solid var(--line);background:transparent;color:var(--gold2);font:500 13px Heebo,sans-serif;padding:5px 12px;border-radius:999px;cursor:pointer}
+.items{counter-reset:it}
+details.it{counter-increment:it;border-top:1px solid var(--line)}
+details.it:first-child{border-top:0}
+details.it>summary{list-style:none;display:flex;align-items:flex-start;gap:12px;padding:13px 2px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+details.it>summary::-webkit-details-marker{display:none}
+details.it>summary::before{content:counter(it);flex:0 0 22px;color:var(--gold);font:900 18px/1.5 "Frank Ruhl Libre",serif;text-align:center}
+details.it .t{flex:1;font-size:16.5px;line-height:1.55}
+details.it .t b{color:#fff;font-weight:700}
+details.it .q{flex:0 0 28px;height:28px;margin-top:1px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold2);
+  font:800 15px/25px Heebo,sans-serif;text-align:center;font-style:normal;transition:background .2s,color .2s,transform .2s}
+details.it[open] .q{background:var(--gold);color:#1a1408;transform:rotate(360deg)}
+details.it .more{margin:0 34px 14px 0;padding:12px 14px;background:var(--panel2);border-radius:12px;border-inline-start:3px solid var(--gold);
+  color:var(--ink);font-size:15.5px;line-height:1.7}
+details.it .more p{margin:0 0 8px}
+details.it .more p:last-child{margin:0}
+details.it .more ul,details.it .more ol{margin:4px 0 8px}
+.ex{display:block;margin-top:6px;color:var(--muted);font-size:14.5px}
+.ex b{color:var(--gold2)}
+.chips.he{direction:rtl;justify-content:flex-start}
 </style>
 </head>
 <body>
 <header class="hero">
   <div class="wrap" style="padding-bottom:0">
-    <div class="kicker">פסיכומטרי · חלק כמותי</div>
+    <div class="kicker" id="kick">פסיכומטרי · חלק כמותי</div>
     <h1>כל מה שצריך<br><span>לדעת בעל פה</span></h1>
-    <p>16 פרקים קצרים: נוסחאות, תכונות, דוגמאות ומלכודות. מומלץ פרק אחד ביום, ובסופו לנסות לכתוב את הכללים מהזיכרון.</p>
+    <p id="heroP">16 פרקים קצרים: נוסחאות, תכונות, דוגמאות ומלכודות. מומלץ פרק אחד ביום, ובסופו לנסות לכתוב את הכללים מהזיכרון.</p>
     <div class="rule"></div>
-    <div class="progress"><span id="ptext">0 מתוך 16 פרקים</span><div class="bar"><i id="pbar"></i></div></div>
+    <div class="progress" id="prog"><span id="ptext">0 מתוך 16 פרקים</span><div class="bar"><i id="pbar"></i></div></div>
   </div>
 </header>
 
 <main class="wrap">
+<div class="modebar">
+  <div class="seg" role="tablist">
+    <button type="button" data-mode="quant" class="on">החומר הכמותי</button>
+    <button type="button" data-mode="tips">דגשים לבחינה</button>
+  </div>
+  <div class="tabs" id="tabs" hidden>
+    <button type="button" data-p="p0" class="on">הכי חשוב</button>
+    <button type="button" data-p="p1">חשיבה</button>
+    <button type="button" data-p="p2">קריאה והבנה</button>
+    <button type="button" data-p="p3">מנטלי</button>
+    <button type="button" data-p="p4">חיבור</button>
+    <button type="button" data-p="p5">ניסויים בסימולציות</button>
+    <button type="button" data-p="p6">תחקיר סימולציה</button>
+  </div>
+</div>
+<div id="quant">
 <nav class="toc" id="toc"></nav>
 
 <section class="ch" id="c1" data-t="מספרים">
@@ -557,6 +613,218 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
 <li><strong>סרטוטים לא תמיד בקנה מידה.</strong> סומכים רק על הנתונים.</li></ul>
 </section>
 
+</div><!-- /quant -->
+
+<div id="tips" hidden>
+
+<section class="pane" id="p0">
+<h2><small>אם זוכרים רק עמוד אחד</small>כללי הזהב</h2>
+<p class="lead">שמונה כללים שתקפים לכל הפרקים. כדאי לשנן אותם עד שהם אוטומטיים.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>אין קנס על טעות.</b> אף שאלה לא נשארת ריקה.</span><i class="q">?</i></summary><div class="more">
+<p>הציון מחושב רק לפי מספר התשובות הנכונות. שאלה ריקה היא אפס בוודאות, וניחוש נותן 25% סיכוי לנקודה.</p>
+<p>שתי דקות לפני סוף כל פרק עוצרים, ומסמנים תשובה בכל שאלה שנשארה. אם אין שום כיוון, בוחרים תמיד את אותה אות כדי לא לבזבז זמן על החלטה.</p></div></details>
+<details class="it"><summary><span class="t"><b>כל שאלה שווה אותו דבר.</b> קודם הקלות, אחר כך הקשות.</span><i class="q">?</i></summary><div class="more">
+<p>שאלה קשה שווה בדיוק כמו שאלה קלה. בתוך כל סוג שאלות, הקושי בדרך כלל עולה ככל שמתקדמים.</p>
+<p>לכן לא נלחמים בשאלה אחת על חשבון שלוש קלות שמחכות בהמשך. מסמנים ניחוש, מקיפים את מספר השאלה, וחוזרים אליה אם נשאר זמן.</p></div></details>
+<details class="it"><summary><span class="t"><b>כלל ה-90 שניות.</b> אין כיוון? מנחשת, מקיפה, ממשיכה.</span><i class="q">?</i></summary><div class="more">
+<p>בפרק של 20 דקות יש בממוצע פחות מדקה לשאלה. אם אחרי דקה וחצי עדיין אין דרך פתרון, סיכוי טוב שהשאלה תבלע עוד שתי דקות.</p>
+<p>הניחוש המסומן מבטיח שהשאלה לא תישאר ריקה גם אם לא תחזרי אליה.</p></div></details>
+<details class="it"><summary><span class="t"><b>פרק שנגמר הוא פרק סגור.</b> לא חוזרים אליו, גם לא בראש.</span><i class="q">?</i></summary><div class="more">
+<p>אי אפשר לחזור לפרק קודם, ואי אפשר להתקדם לפרק הבא לפני הזמן. כל דקה של הפרק נשארת בתוך הפרק: מה שנשאר בסוף הולך לשאלות המוקפות ולבדיקה.</p>
+<p>מחשבה על פרק קודם היא זמן שנגנב מהפרק הנוכחי.</p></div></details>
+<details class="it"><summary><span class="t"><b>יש פרק שלא נספר.</b> פרק קשה הוא לא סימן לכלום.</span><i class="q">?</i></summary><div class="more">
+<p>בבחינה יש פרק ניסיוני שלא נכנס לציון, ולא יודעים איזה פרק זה. פרק שהרגיש נורא יכול להיות בדיוק הוא.</p>
+<p>וגם אם לא, הציון מחושב יחסית לכל הנבחנים. אם היה לך קשה, היה קשה לכולם.</p></div></details>
+<details class="it"><summary><span class="t"><b>קוראים את השאלה עד המילה האחרונה.</b> במיוחד "לא", "בהכרח", "אינו".</span><i class="q">?</i></summary><div class="more">
+<p>הרבה טעויות הן לא טעויות ידע אלא קריאה. מילות שלילה ומילים כמו "בהכרח", "ייתכן", "בדיוק", "לפחות" הופכות את השאלה.</p>
+<p>מקיפים אותן בעיפרון כבר בקריאה הראשונה, ולפני הסימון שואלים: "על מה בדיוק שאלו?"</p></div></details>
+<details class="it"><summary><span class="t"><b>מבט בשעון בחצי הפרק.</b> לא כל דקה, ולא רק בסוף.</span><i class="q">?</i></summary><div class="more">
+<p>בודקים פעם אחת באמצע: אחרי 10 דקות צריך להיות בערך בחצי מהשאלות. מאחור? מאיצים ומיישמים את כלל ה-90 שניות בקפדנות. בודקים שוב 2 דקות לפני הסוף לסימון הניחושים.</p>
+<p>הצצה בשעון כל דקה מגבירה לחץ ומפרקת ריכוז.</p></div></details>
+<details class="it"><summary><span class="t"><b>שלוש נשימות לפני כל פרק.</b> עשר שניות שמאפסות את הראש.</span><i class="q">?</i></summary><div class="more">
+<p>שאיפה של 4 שניות, נשיפה ארוכה של 6. שלוש פעמים. נשיפה ארוכה מורידה דופק ומחזירה ריכוז.</p>
+<p>זה גם הרגע לסגור את הפרק הקודם ולהתחיל נקי.</p></div></details>
+</div>
+</section>
+
+<section class="pane" id="p1" hidden>
+<h2><small>איך לפתור בזמן הבחינה</small>חשיבה ואסטרטגיה</h2>
+<p class="lead">שיטות עבודה שחוסכות זמן ומונעות טעויות, בעיקר בכמותי ובחשיבה המילולית.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>שני סבבים.</b> קודם כל מה שבטוח, ואז חוזרים למוקפות.</span><i class="q">?</i></summary><div class="more">
+<p>סבב ראשון: עוברים על כל הפרק, פותרים את מה שברור, ומקיפים כל שאלה שנראית ארוכה או מבלבלת. סבב שני: חוזרים למוקפות עם הזמן שנשאר.</p>
+<p>כך אף שאלה קלה לא הולכת לאיבוד בגלל שאלה קשה שעמדה לפניה.</p></div></details>
+<details class="it"><summary><span class="t"><b>מציצים בתשובות לפני שפותרים.</b> הן אומרות כמה דיוק צריך.</span><i class="q">?</i></summary><div class="more">
+<p>התשובות מגלות באיזו צורה התוצאה (שבר, שורש, מספר שלם) ואם צריך חישוב מדויק בכלל.</p>
+<span class="ex">אם התשובות הן <b>12, 40, 75, 200</b>, מספיק אומדן גס. אם הן <b>48, 50, 52, 54</b>, צריך לחשב בדיוק.</span></div></details>
+<details class="it"><summary><span class="t"><b>אותיות בשאלה? מציבים מספרים.</b> לא 0, לא 1, ולא אותו מספר פעמיים.</span><i class="q">?</i></summary><div class="more">
+<p>כשהשאלה והתשובות מלאות במשתנים, בוחרים מספרים קטנים ונוחים (2, 3, 5), מחשבים את התוצאה, ובודקים איזו תשובה נותנת את אותו מספר.</p>
+<p>0 ו-1 יוצרים צירופי מקרים (כפל ב-1 לא משנה כלום), ולכן כמה תשובות ייראו נכונות. אם שתי תשובות מתאימות, מציבים מספר אחר ובודקים רק אותן.</p></div></details>
+<details class="it"><summary><span class="t"><b>הצבת תשובות מהאמצע.</b> כשהן מסודרות לפי גודל.</span><i class="q">?</i></summary><div class="more">
+<p>כשהתשובות הן מספרים בסדר עולה, מציבים קודם את האמצעית. אם יצא גדול מדי, נשארות רק הקטנות ממנה, ולהפך. בממוצע זה חוסך חצי מההצבות.</p></div></details>
+<details class="it"><summary><span class="t"><b>פסילה שווה כמו פתרון.</b> כל תשובה שנפסלה מעלה את הסיכוי.</span><i class="q">?</i></summary><div class="more">
+<p>גם בלי לפתור עד הסוף, אפשר לפסול תשובות שלא הגיוניות: סימן לא נכון, גודל לא סביר, יחידות שגויות. שתיים נשארו? הסיכוי קפץ ל-50%.</p>
+<p>בשאלות "בהכרח": מספיקה דוגמה נגדית אחת כדי לפסול תשובה.</p></div></details>
+<details class="it"><summary><span class="t"><b>אומדן לפני חישוב.</b> יודעים מראש בערך מה צריך לצאת.</span><i class="q">?</i></summary><div class="more">
+<p>מעגלים את המספרים ומעריכים את התוצאה תוך שניות. זה פוסל תשובות מיד, ותופס טעויות חישוב: אם האומדן 300 ויצא לך 3,000, משהו השתבש.</p></div></details>
+<details class="it"><summary><span class="t"><b>הנתונים על הדף, לא בראש.</b> כותבים, מסמנים, מסרטטים.</span><i class="q">?</i></summary><div class="more">
+<p>מעתיקים לסרטוט את כל הנתונים מהשאלה, גם אלה שנראים שוליים. מסרטטים גם כשאין סרטוט.</p>
+<p>זיכרון עבודה תחת לחץ מתמלא מהר, ורוב טעויות הדעת נולדות מנתון ששכחנו.</p></div></details>
+<details class="it"><summary><span class="t"><b>תרשים או טבלה: קודם צירים ויחידות.</b> רק אחר כך השאלות.</span><i class="q">?</i></summary><div class="more">
+<p>לפני השאלה הראשונה מבינים מה כל ציר מודד, באילו יחידות, ומה מקרא הצבעים. הרבה מלכודות בנויות על אלפים מול מיליונים או אחוזים מול מספרים.</p>
+<p>ההבדל בין "שינוי" ל"שינוי באחוזים" הוא מלכודת קלאסית.</p></div></details>
+<details class="it"><summary><span class="t"><b>הסקה ולוגיקה: מתרגמים לתנאים קצרים.</b> "אם... אז...".</span><i class="q">?</i></summary><div class="more">
+<p>בשאלות הסקה מנסחים כל נתון כשורה קצרה (חץ, סימן או מילה). "אם A אז B" לא אומר "אם B אז A". אבל הוא כן אומר "אם לא B, אז לא A".</p></div></details>
+</div>
+</section>
+
+<section class="pane" id="p2" hidden>
+<h2><small>מילולי ואנגלית</small>קריאה והבנה</h2>
+<p class="lead">התשובה הנכונה תמיד נשענת על הטקסט. לא על ידע כללי ולא על דעה.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>קריאה ראשונה בשביל השלד.</b> לא בשביל כל פרט.</span><i class="q">?</i></summary><div class="more">
+<p>קוראים את הקטע פעם אחת ברצף כדי להבין על מה הוא, מה עמדת הכותב, ומה תפקיד כל פסקה. לא משננים מספרים ושמות. לפרטים חוזרים כשהשאלה מבקשת אותם.</p></div></details>
+<details class="it"><summary><span class="t"><b>מילה ליד כל פסקה.</b> מפה קטנה בשוליים.</span><i class="q">?</i></summary><div class="more">
+<p>אחרי כל פסקה כותבים בשוליים 2–3 מילים: "בעיה", "מחקר", "ביקורת", "פתרון". כשמגיעה שאלה, יודעים מיד לאיזו פסקה ללכת במקום לקרוא הכל מחדש.</p></div></details>
+<details class="it"><summary><span class="t"><b>מקיפים מילות קישור.</b> "אבל", "לכן", "למרות" מראות את הכיוון.</span><i class="q">?</i></summary><div class="more">
+<p>מילות ניגוד (אבל, אולם, לעומת זאת, however, although) מסמנות שהכותב עומד לסתור את מה שנאמר. מילות תוצאה (לכן, therefore, thus) מסמנות את המסקנה. רוב השאלות נבנות בדיוק על המקומות האלה.</p></div></details>
+<details class="it"><summary><span class="t"><b>השאלות הולכות לפי סדר הקטע.</b> בדרך כלל.</span><i class="q">?</i></summary><div class="more">
+<p>בדרך כלל השאלות על פרטים מסודרות לפי סדר הופעתם בקטע. אם שאלה 3 על הפסקה השנייה, התשובה לשאלה 4 כנראה נמצאת אחריה. שאלות על הרעיון המרכזי או על מטרת הקטע מגיעות לרוב בסוף.</p></div></details>
+<details class="it"><summary><span class="t"><b>אם זה לא כתוב, זה לא נכון.</b> גם אם זה נשמע הגיוני.</span><i class="q">?</i></summary><div class="more">
+<p>מסיחים רבים הם משפטים נכונים לגמרי בעולם, אבל לא נאמרו בקטע. לפני שמסמנים, מצביעים על המשפט בטקסט שמוכיח את התשובה. אין משפט כזה? זה מסיח.</p></div></details>
+<details class="it"><summary><span class="t"><b>נכון, אבל לא עונה על השאלה.</b> גם זה מסיח.</span><i class="q">?</i></summary><div class="more">
+<p>תשובה יכולה להיות מדויקת לפי הקטע ועדיין לא לענות על מה ששאלו. אחרי שבחרת, קראי שוב את השאלה ובדקי שהתשובה עונה עליה ישירות.</p></div></details>
+<details class="it"><summary><span class="t"><b>מילים קיצוניות = חשד.</b> "תמיד", "אף פעם", "כל", "רק".</span><i class="q">?</i></summary><div class="more">
+<p>טקסטים אקדמיים מנוסחים בזהירות. תשובה עם ניסוח מוחלט נכונה רק אם הקטע עצמו מוחלט באותה מידה. ניסוחים מתונים כמו "לעיתים", "עשוי", "may", "some" נכונים יותר בדרך כלל.</p></div></details>
+<details class="it"><summary><span class="t"><b>אנלוגיות: משפט קשר.</b> בונים משפט שמחבר את הזוג.</span><i class="q">?</i></summary><div class="more">
+<p>מנסחים משפט מדויק שמקשר בין שתי המילים, ומציבים בו כל אחת מהתשובות. אם כמה מתאימות, מחדדים את המשפט עד שנשארת אחת.</p>
+<span class="ex">"<b>טבח</b> משתמש ב<b>סכין</b> כדי לעבוד" מתאים להרבה זוגות. "הכלי העיקרי של..." כבר מצמצם.</span></div></details>
+<details class="it"><summary><span class="t"><b>השלמת משפטים: קודם מילה משלך.</b> אחר כך מחפשים אותה בתשובות.</span><i class="q">?</i></summary><div class="more">
+<p>מכסים את התשובות, מבינים מהמשפט איזו מילה חסרה (או לפחות אם היא חיובית או שלילית), ורק אז מחפשים את התשובה הקרובה. כך המסיחים לא מושכים אותך.</p></div></details>
+<details class="it"><summary><span class="t"><b>אנגלית: מילה לא מוכרת? ממשיכים.</b> ההקשר מספיק.</span><i class="q">?</i></summary><div class="more">
+<p>כמעט אף שאלה לא תלויה במילה אחת. מבינים את כיוון המשפט מהמילים שמסביב ומתקדמים. נתקעים על מילה רק אם השאלה שואלת עליה.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוח מחדש: כל פרט חייב להתאים.</b> זמן, שלילה, כמות.</span><i class="q">?</i></summary><div class="more">
+<p>בשאלות ניסוח מחדש (restatements) התשובה הנכונה שומרת על כל המשמעות. משווים אחד-אחד: מי עשה, מה, מתי (זמן הפועל), האם יש שלילה, וכמה (some מול all, may מול must). פרט אחד שונה פוסל.</p></div></details>
+</div>
+</section>
+
+<section class="pane" id="p3" hidden>
+<h2><small>הראש שלך הוא חלק מהבחינה</small>מנטלי</h2>
+<p class="lead">לחץ הוא טבעי. המטרה היא לא להיעלם ממנו, אלא לתפקד טוב גם כשהוא שם.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>"אני מתרגשת", לא "אני לחוצה".</b> הגוף מכין אותך להופעה.</span><i class="q">?</i></summary><div class="more">
+<p>דופק מהיר וידיים קרות הם אותה תגובה בדיוק כמו התרגשות. במחקרים, אנשים שאמרו לעצמם "אני מתרגש" לפני משימה מלחיצה תפקדו טוב יותר ממי שניסו להירגע. לא נלחמים בתחושה, נותנים לה שם אחר.</p></div></details>
+<details class="it"><summary><span class="t"><b>רק השאלה שמולך.</b> לא הציון, לא הפרק הקודם, לא העתיד.</span><i class="q">?</i></summary><div class="more">
+<p>מחשבות כמו "מה אם לא אגיע לציון" תופסות מקום בזיכרון העבודה, אותו מקום שצריך לפתרון. ברגע שהמחשבה מופיעה, אומרים לעצמך "שאלה הבאה" וחוזרים לדף.</p></div></details>
+<details class="it"><summary><span class="t"><b>לא סופרים טעויות בזמן הבחינה.</b> אין לך דרך לדעת.</span><i class="q">?</i></summary><div class="more">
+<p>תחושת "פספסתי המון" כמעט תמיד מוגזמת. זוכרים את השאלות הקשות ושוכחים את עשרות הקלות שהלכו טוב. ההערכה בזמן אמת לא שווה כלום, אז לא מבזבזים עליה אנרגיה.</p></div></details>
+<details class="it"><summary><span class="t"><b>משפט עוגן.</b> משפט אחד קבוע שחוזר בכל רגע קשה.</span><i class="q">?</i></summary><div class="more">
+<p>בוחרים משפט קצר ומתרגלים אותו בכל סימולציה, למשל "אני מוכנה. שאלה אחרי שאלה." כשהוא מתורגל, הוא מפעיל את מצב העבודה גם ביום הבחינה.</p></div></details>
+<details class="it"><summary><span class="t"><b>בהפסקה לא מדברים על תשובות.</b> לא עם אף אחד.</span><i class="q">?</i></summary><div class="more">
+<p>שיחה על "מה יצא לך בשאלה 7" רק מכניסה ספקות לפני פרקים שעוד לא נכתבו. בהפסקה: מים, משהו קטן לאכול, שירותים, מתיחה.</p></div></details>
+<details class="it"><summary><span class="t"><b>יום לפני: שום חומר חדש.</b> חזרה קלה ושינה.</span><i class="q">?</i></summary><div class="more">
+<p>מה שלא נלמד עד אז לא ייקלט ביום אחד, ורק יוסיף לחץ. אפשר לעבור על "כללי הזהב" ומחברת הטעויות, ולסגור את היום מוקדם. שינה טובה היא חלק מהציון.</p></div></details>
+<details class="it"><summary><span class="t"><b>בוקר הבחינה: הכל מוכר.</b> אוכל רגיל, מים, תעודה מזהה, הגעה מוקדמת.</span><i class="q">?</i></summary><div class="more">
+<ul><li>ארוחת בוקר שאת רגילה אליה, לא ניסויים.</li>
+<li>תעודה מזהה ומה שהזימון דורש, מוכנים מהערב.</li>
+<li>הגעה מוקדמת, כדי שהלחץ לא יתחיל כבר בפקק.</li>
+<li>שכבה נוספת של בגדים: אולמות לפעמים קרים.</li></ul></div></details>
+</div>
+</section>
+
+<section class="pane" id="p4" hidden>
+<h2><small>חלק מהציון המילולי</small>חיבור</h2>
+<p class="lead">חיבור טוב הוא קודם כל ברור ומאורגן. לא צריך להיות סופרת, צריך מבנה.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>5 · 22 · 3.</b> דקות תכנון, כתיבה, הגהה.</span><i class="q">?</i></summary><div class="more">
+<p>כ-5 דקות לקריאת המטלה ולתכנון בטיוטה, כ-22 דקות לכתיבה, 3 דקות לקריאה חוזרת ותיקון. מי שמתחילה לכתוב בלי תכנון נתקעת באמצע ומבזבזת יותר.</p></div></details>
+<details class="it"><summary><span class="t"><b>קוראים את המטלה פעמיים.</b> מסמנים כל דבר שמבקשים.</span><i class="q">?</i></summary><div class="more">
+<p>מטלה יכולה לבקש כמה דברים: לנקוט עמדה, להשוות, להציע פתרון. מסמנים כל חלק ומוודאים שכל אחד מקבל מענה. חיבור יפה שלא עונה על המטלה מקבל ציון נמוך.</p></div></details>
+<details class="it"><summary><span class="t"><b>עמדה ברורה כבר בפתיחה.</b> הקורא יודע מה את חושבת אחרי 3 שורות.</span><i class="q">?</i></summary><div class="more">
+<p>פתיחה: משפט שמציג את הנושא, ומשפט שאומר במפורש מה העמדה שלך. לא משאירים את העמדה לסוף ולא מתחמקים ממנה.</p></div></details>
+<details class="it"><summary><span class="t"><b>מבנה קבוע: פתיחה, 2 טיעונים, טיעון נגד, סיכום.</b></span><i class="q">?</i></summary><div class="more">
+<ol><li><strong>פתיחה:</strong> הנושא והעמדה.</li>
+<li><strong>טיעון ראשון:</strong> החזק ביותר.</li>
+<li><strong>טיעון שני.</strong></li>
+<li><strong>טיעון נגד והפרכה:</strong> "יש הטוענים ש... אולם..." זה מראה חשיבה רחבה ומעלה את ציון התוכן.</li>
+<li><strong>סיכום:</strong> העמדה שוב, במילים אחרות, עם משפט מסכם.</li></ol></div></details>
+<details class="it"><summary><span class="t"><b>כל פסקה: טענה, הסבר, דוגמה.</b></span><i class="q">?</i></summary><div class="more">
+<p>המשפט הראשון בפסקה אומר מה הטענה. אחריו מסבירים למה, ומביאים דוגמה מוחשית. טענה בלי דוגמה נשמעת כללית. דוגמה בלי טענה נשמעת כמו סיפור.</p></div></details>
+<details class="it"><summary><span class="t"><b>בנק דוגמאות מוכן מראש.</b> דוגמה אחת לכל תחום.</span><i class="q">?</i></summary><div class="more">
+<p>מכינים מראש דוגמה או שתיים לכל תחום שחוזר בנושאי חיבור, כך שאפשר להתאים אותן לכמעט כל נושא:</p>
+<div class="chips he"><span>טכנולוגיה ורשתות</span><span>חינוך</span><span>בריאות</span><span>סביבה</span><span>כלכלה ועבודה</span><span>חברה ומשפחה</span><span>מדינה וחוק</span></div></div></details>
+<details class="it"><summary><span class="t"><b>מילות קישור מחברות את הטיעונים.</b></span><i class="q">?</i></summary><div class="more">
+<div class="chips he"><span>ראשית</span><span>שנית</span><span>יתרה מזאת</span><span>זאת ועוד</span><span>אולם</span><span>לעומת זאת</span><span>אמנם... אך</span><span>לפיכך</span><span>כתוצאה מכך</span><span>לסיכום</span></div>
+<p>הן מראות לבודק שיש סדר הגיוני, וזה חלק מציון התוכן.</p></div></details>
+<details class="it"><summary><span class="t"><b>שפה תקנית ומשפטים בינוניים.</b> בלי סלנג, בלי משפטים של 4 שורות.</span><i class="q">?</i></summary><div class="more">
+<p>החיבור נבדק גם על לשון: אוצר מילים, תחביר, פיסוק. משפט ארוך מדי מגדיל את הסיכוי לשגיאה. עדיף משפט ברור באורך שורה–שתיים.</p></div></details>
+<details class="it"><summary><span class="t"><b>הגהה: מחפשים 3 דברים.</b> שגיאות כתיב, משפט שבור, חזרה על מילים.</span><i class="q">?</i></summary><div class="more">
+<p>בקריאה החוזרת לא משכתבים. מתקנים רק שגיאות כתיב, משפטים שלא נגמרו, ומילה שחוזרת פעמים רבות (מחליפים במילה נרדפת).</p></div></details>
+</div>
+</section>
+
+<section class="pane" id="p5" hidden>
+<h2><small>סימולציה היא מעבדה</small>ניסויים בסימולציות</h2>
+<p class="lead">כל סימולציה היא הזדמנות לבדוק שיטה. ביום הבחינה מגיעים רק עם מה שהוכח.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>משנים רק דבר אחד בכל פעם.</b> אחרת לא יודעים מה עזר.</span><i class="q">?</i></summary><div class="more">
+<p>אם בסימולציה אחת משנים גם את סדר הפתרון וגם את ניהול הזמן, ואז הציון עולה, אי אפשר לדעת מה גרם לזה. ניסוי אחד בכל סימולציה, וכותבים מראש מה בודקים.</p></div></details>
+<details class="it"><summary><span class="t"><b>תנאי אמת מלאים.</b> אותה שעה, אותו אורך, בלי טלפון.</span><i class="q">?</i></summary><div class="more">
+<p>מתחילים בשעה שבה תתחיל הבחינה, עושים את כל הפרקים כולל חיבור, עם שעון לכל פרק והפסקות קצרות כמו בבחינה. הטלפון בחדר אחר. אחרת התוצאה לא אומרת הרבה על היום האמיתי.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוי זמן: 17 דקות במקום 20.</b></span><i class="q">?</i></summary><div class="more">
+<p>מדי פעם פותרים פרק בזמן מקוצר. זה מכריח לדלג מהר ולוותר על שאלות תקועות. ביום הבחינה 20 דקות ירגישו מרווחות.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוי סדר: סדר שונה בתוך הפרק.</b></span><i class="q">?</i></summary><div class="more">
+<p>למשל: באנגלית להתחיל מקטע הקריאה ואז לחזור להשלמות. בכמותי לפתור קודם את כל השאלות הקצרות. משווים את מספר הנכונות לסדר הרגיל, לאורך 2–3 סימולציות.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוי קריאה: שאלות קודם מול קטע קודם.</b></span><i class="q">?</i></summary><div class="more">
+<p>בסימולציה אחת קוראים קודם את הקטע ואז את השאלות. באחרת מציצים קודם בשאלות ואז קוראים. בודקים איזו שיטה נותנת יותר נכונות באותו זמן. אין שיטה נכונה לכולם.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוי ה-90 שניות.</b> עם כלל דילוג נוקשה מול בלי.</span><i class="q">?</i></summary><div class="more">
+<p>בסימולציה אחת מדלגים בכל מחיר אחרי 90 שניות. משווים לסימולציה רגילה: כמה שאלות נשארו בלי זמן בכל אחת, וכמה נכונות יצאו.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוי רעש.</b> סימולציה עם רעש רקע או אחרי יום עייף.</span><i class="q">?</i></summary><div class="more">
+<p>ביום הבחינה יהיו שיעולים, כיסאות חורקים ועייפות. סימולציה אחת עם הקלטה של בית קפה ברקע, או בסוף יום ארוך, מלמדת לשמור על ריכוז גם בתנאים לא מושלמים.</p></div></details>
+<details class="it"><summary><span class="t"><b>ניסוי חיבור: 25 דקות.</b></span><i class="q">?</i></summary><div class="more">
+<p>כותבים חיבור בזמן מקוצר עם המבנה הקבוע. אם המבנה עובד גם ב-25 דקות, ביום הבחינה יישאר זמן להגהה.</p></div></details>
+</div>
+</section>
+
+<section class="pane" id="p6" hidden>
+<h2><small>כאן קורה רוב השיפור</small>תחקיר סימולציה</h2>
+<p class="lead">הסימולציה מראה איפה את עומדת. התחקיר הוא מה שמזיז את הציון.</p>
+<div class="panehead"><span>לחיצה על ? פותחת הסבר</span><button class="openall" type="button">פתחי הכל</button></div>
+<div class="items">
+<details class="it"><summary><span class="t"><b>תחקיר באותו יום או למחרת.</b> לא אחרי שבוע.</span><i class="q">?</i></summary><div class="more">
+<p>כשהסימולציה טרייה, זוכרים למה בחרת כל תשובה ואיפה הרגשת לחץ. אחרי שבוע נשאר רק הציון, והוא לא מלמד כלום.</p></div></details>
+<details class="it"><summary><span class="t"><b>קודם פותרים שוב, בלי שעון.</b> רק אחר כך מסתכלים בפתרון.</span><i class="q">?</i></summary><div class="more">
+<p>כל שאלה שטעית בה, נסי לפתור שוב בשקט לפני שאת מסתכלת בפתרון.</p>
+<ul><li><strong>הצלחת?</strong> הבעיה היא זמן או לחץ, לא ידע.</li>
+<li><strong>לא הצלחת?</strong> זה פער ידע, ועכשיו הפתרון באמת ילמד אותך.</li></ul>
+<p>זה ההבדל בין תחקיר אמיתי לקריאת פתרונות.</p></div></details>
+<details class="it"><summary><span class="t"><b>לכל טעות סיבה אחת.</b> שש קטגוריות.</span><i class="q">?</i></summary><div class="more">
+<div class="chips he"><span>ידע חסר</span><span>טעות קריאה</span><span>טעות חישוב</span><span>לחץ זמן</span><span>נפלתי במסיח</span><span>ניחוש</span></div>
+<p>שמים לכל שאלה שגויה תווית אחת. אחרי 2–3 סימולציות רואים דפוס: למשל שרוב הנקודות הולכות על טעויות קריאה ולא על חומר.</p></div></details>
+<details class="it"><summary><span class="t"><b>גם הנכונות שניחשת נכנסות לתחקיר.</b></span><i class="q">?</i></summary><div class="more">
+<p>תשובה נכונה מניחוש היא נקודה ששווה פחות ממה שנראה. בזמן הפתרון מסמנים סימן קטן ליד כל שאלה שלא היית בטוחה בה, ובתחקיר עוברים עליהן כמו על טעויות.</p></div></details>
+<details class="it"><summary><span class="t"><b>תוקפים את הקטגוריה הגדולה.</b> לא את כולן ביחד.</span><i class="q">?</i></summary><div class="more">
+<p>סופרים כמה טעויות היו בכל קטגוריה. מקדישים את השבוע הבא לקטגוריה שגבתה הכי הרבה נקודות. אם זה ידע, חוזרים לפרק המתאים בחומר הכמותי. אם זו קריאה, עובדים על סימון מילות מפתח.</p></div></details>
+<details class="it"><summary><span class="t"><b>מחברת טעויות: שאלה, טעות, כלל.</b></span><i class="q">?</i></summary><div class="more">
+<p>לכל טעות חשובה כותבים שלוש שורות: מה שאלו, מה עשית לא נכון, וכלל של משפט אחד שהיה מונע את הטעות. לפני כל סימולציה עוברים על הכללים. המחברת הזאת היא חומר החזרה הכי אישי שיש לך.</p></div></details>
+<details class="it"><summary><span class="t"><b>תחקיר זמן: איפה נשרפו הדקות.</b></span><i class="q">?</i></summary><div class="more">
+<p>מסמנים בזמן הפתרון כל שאלה שלקחה יותר מ-2 דקות. בתחקיר בודקים: האם השקעת הזמן הזו הייתה שווה? בדרך כלל מתגלה שאלה אחת שעלתה בשלוש שאלות קלות שלא הספקת.</p></div></details>
+<details class="it"><summary><span class="t"><b>טבלת ציונים לפי פרק.</b> מגמה, לא סימולציה בודדת.</span><i class="q">?</i></summary><div class="more">
+<p>רושמים בכל סימולציה את מספר הנכונות בכל פרק (מילולי, כמותי, אנגלית) ואת הניסוי שנבדק. ציון של סימולציה אחת קופץ למעלה ולמטה. המגמה לאורך 4–5 סימולציות היא מה שמראה אם שיטה עובדת.</p></div></details>
+<details class="it"><summary><span class="t"><b>מסקנה אחת לסימולציה הבאה.</b> כתובה, ספציפית.</span><i class="q">?</i></summary><div class="more">
+<p>מסיימים כל תחקיר במשפט אחד: "בסימולציה הבאה אני ___". למשל: "מקיפה כל 'לא' בשאלה". מסקנה אחת שמיישמים שווה יותר מעשר שנשכחות.</p></div></details>
+</div>
+</section>
+
+</div><!-- /tips -->
+
 <footer>בהצלחה בבחינה</footer>
 </main>
 <button class="top" id="top" aria-label="חזרה למעלה">↑</button>
@@ -588,6 +856,40 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
   var top=document.getElementById('top');
   window.addEventListener('scroll',function(){top.classList.toggle('show',window.scrollY>600);},{passive:true});
   top.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};
+
+  /* ---- modes + tips tabs ---- */
+  var MK='psycho-mode-v1', PK='psycho-pane-v1';
+  function get(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+  function put(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  var quant=document.getElementById('quant'), tips=document.getElementById('tips'), tabs=document.getElementById('tabs');
+  var heroP=document.getElementById('heroP'), prog=document.getElementById('prog');
+  var quantText=heroP.textContent, tipsText='דגשים לחשיבה, לקריאה, לראש ולחיבור, וגם איך להפיק את המקסימום מכל סימולציה. שורה קצרה לשינון, ו-? לפירוט המלא.';
+  var modeBtns=[].slice.call(document.querySelectorAll('.seg button'));
+  var paneBtns=[].slice.call(tabs.querySelectorAll('button'));
+  var bar=document.querySelector('.modebar');
+  function scrollToBar(){var y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y)window.scrollTo({top:y});}
+  function setMode(m,noScroll){
+    var t=m==='tips';
+    quant.hidden=t; tips.hidden=!t; tabs.hidden=!t; prog.hidden=t;
+    heroP.textContent=t?tipsText:quantText; document.getElementById('kick').textContent=t?'פסיכומטרי · דגשים לבחינה':'פסיכומטרי · חלק כמותי';
+    modeBtns.forEach(function(b){b.classList.toggle('on',b.dataset.mode===m);});
+    put(MK,m); if(!noScroll)scrollToBar();
+  }
+  function setPane(id,noScroll){
+    paneBtns.forEach(function(b){var on=b.dataset.p===id; b.classList.toggle('on',on); document.getElementById(b.dataset.p).hidden=!on;
+      if(on&&b.scrollIntoView)b.scrollIntoView({block:'nearest',inline:'center'});});
+    put(PK,id); if(!noScroll)scrollToBar();
+  }
+  modeBtns.forEach(function(b){b.onclick=function(){setMode(b.dataset.mode);};});
+  paneBtns.forEach(function(b){b.onclick=function(){setPane(b.dataset.p);};});
+  [].slice.call(document.querySelectorAll('.pane')).forEach(function(p){
+    var btn=p.querySelector('.openall'), ds=[].slice.call(p.querySelectorAll('details.it'));
+    function sync(){btn.textContent=ds.every(function(d){return d.open;})?'סגרי הכל':'פתחי הכל';}
+    btn.onclick=function(){var open=!ds.every(function(d){return d.open;}); ds.forEach(function(d){d.open=open;}); sync();};
+    ds.forEach(function(d){d.addEventListener('toggle',sync);});
+  });
+  var savedPane=get(PK); if(savedPane&&document.getElementById(savedPane))setPane(savedPane,true);
+  if(location.hash==='#tips'||get(MK)==='tips')setMode('tips',true);
 })();
 </script>
 </body>
