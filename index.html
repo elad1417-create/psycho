@@ -116,6 +116,90 @@ details.it .more ul,details.it .more ol{margin:4px 0 8px}
 .ex{display:block;margin-top:6px;color:var(--muted);font-size:14.5px}
 .ex b{color:var(--gold2)}
 .chips.he{direction:rtl;justify-content:flex-start}
+
+/* ===== ספירה לאחור לבחינה (4.12.2026 09:00) ===== */
+.cdbar{display:flex;align-items:center;gap:14px;max-width:760px;margin:16px auto 0;padding:12px 16px;background:linear-gradient(135deg,#1f1a10,#15130f);border:1px solid rgba(212,175,95,.45);border-radius:16px;cursor:pointer;text-align:start;color:var(--ink);font:inherit;width:calc(100% - 32px)}
+.cdbar .n{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:40px;line-height:1;color:var(--gold2);min-width:52px;text-align:center}
+.cdbar .tx{flex:1;min-width:0}
+.cdbar .tx b{display:block;font-size:15px;color:var(--gold)}
+.cdbar .tx span{display:block;font-size:14px;color:var(--ink);line-height:1.45}
+.cdbar .go{font-size:13px;color:var(--gold2);white-space:nowrap}
+@media(min-width:1400px){.cdbar{display:none}}
+
+.cdd{position:fixed;top:0;bottom:0;left:0;width:min(380px,92vw);background:var(--panel);border-inline-end:1px solid var(--line);z-index:60;overflow-y:auto;transform:translateX(-102%);transition:transform .35s ease;box-shadow:12px 0 40px rgba(0,0,0,.55);-webkit-overflow-scrolling:touch}
+.cdd.open{transform:none}
+.cdshade{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:59;opacity:0;pointer-events:none;transition:opacity .3s}
+.cdshade.on{opacity:1;pointer-events:auto}
+@media(min-width:1400px){
+  .cdd{transform:none;width:330px;box-shadow:none}
+  .cdshade{display:none}
+  .cdd .x{display:none}
+  .top{left:346px}
+  body{padding-left:330px}
+}
+.cdd .in{padding:20px 18px 28px}
+.cdd .x{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 18px Heebo;cursor:pointer}
+.cdk{color:var(--gold);font:700 12px Heebo;letter-spacing:.16em}
+.cdbig{text-align:center;margin:14px 0 6px}
+.cdbig .num{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:96px;line-height:.95;background:linear-gradient(180deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cdbig .lab{font-size:17px;color:var(--ink);font-weight:700}
+.cdbig .sub{font-size:13px;color:var(--muted);margin-top:2px;direction:rtl}
+.cddots{display:flex;justify-content:center;gap:7px;margin:12px 0 4px}
+.cddots i{width:9px;height:9px;border-radius:50%;background:var(--panel2);border:1px solid var(--line)}
+.cddots i.past{background:var(--gold);border-color:var(--gold)}
+.cddots i.now{background:transparent;border:2px solid var(--gold2);box-shadow:0 0 0 3px rgba(240,213,138,.15)}
+.cdmsg{margin:16px 0 0;padding:16px;border-radius:14px;background:linear-gradient(160deg,rgba(212,175,95,.14),rgba(212,175,95,.04));border:1px solid rgba(212,175,95,.35)}
+.cdmsg p{margin:0;font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:20px;line-height:1.45;color:var(--ink)}
+.cdmsg .more{margin-top:10px;background:transparent;border:0;color:var(--gold2);font:600 13px Heebo;cursor:pointer;padding:0}
+.cdsec{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+.cdsec h4{margin:0 0 8px;font:800 15px Heebo;color:var(--gold)}
+.cdsec h4 small{font-weight:500;color:var(--muted);font-size:12px;margin-inline-start:6px}
+.cdtask{font-size:15px;line-height:1.6}
+.cdtask .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:6px;margin-top:6px;border:1px solid var(--line);color:var(--muted)}
+.cdtask .tag.of{border-color:rgba(212,175,95,.5);color:var(--gold2)}
+.cddone{margin-top:10px;display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);cursor:pointer;user-select:none}
+.cddone input{accent-color:#d4af5f;width:18px;height:18px}
+.cdelad{margin-top:18px;padding:16px;border-radius:14px;background:var(--panel2);border:1px solid var(--line);text-align:center}
+.cdelad .h{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:22px;color:var(--gold2)}
+.cdelad p{margin:4px 0 12px;font-size:14px;color:var(--muted)}
+.cdbtns{display:flex;gap:8px}
+.cdbtns a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:12px;text-decoration:none;font:700 14.5px Heebo;white-space:nowrap;padding:0 8px}
+.cdbtns .call{background:var(--gold);color:#1a1408}
+.cdbtns .wa{border:1px solid rgba(212,175,95,.5);color:var(--gold2)}
+.cdbtns svg{width:17px;height:17px}
+.cdlist{list-style:none;margin:0;padding:0}
+.cdlist li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:14.5px;line-height:1.5}
+.cdlist li input{accent-color:#d4af5f;width:18px;height:18px;margin-top:2px;flex:none}
+.cdlist li.no{color:var(--trap)}
+.cdlist li.no::before{content:"";flex:none;width:8px;height:8px;margin:8px 5px 0;border-radius:2px;background:var(--trap)}
+.cdlist li label{cursor:pointer}
+.cdrem{margin:0;padding-inline-start:20px;font-size:14.5px;line-height:1.55}
+.cdrem li{margin:5px 0}
+.cdrem b{color:var(--gold2)}
+.cdbreath{text-align:center}
+.cdbreath .ring{width:120px;height:120px;margin:6px auto 10px;border-radius:50%;border:2px solid rgba(212,175,95,.5);display:grid;place-items:center;transform:scale(.62);background:radial-gradient(circle,rgba(212,175,95,.22),rgba(212,175,95,.04));transition:transform 4s ease-in-out}
+.cdbreath .ring span{font:700 14px Heebo;color:var(--gold2);transform:scale(1.4)}
+.cdbreath button{border:1px solid rgba(212,175,95,.5);background:transparent;color:var(--gold2);font:700 14px Heebo;padding:8px 18px;border-radius:999px;cursor:pointer}
+.cdsrc{margin-top:16px;font-size:12px;color:var(--muted);line-height:1.5}
+@media(prefers-reduced-motion:reduce){.cdd,.cdbreath .ring{transition:none}}
+/* לבבות + תמונות */
+.cdhearts{position:absolute;inset:0 0 auto 0;height:190px;overflow:hidden;pointer-events:none}
+.cdhearts i{position:absolute;bottom:-20px;font-style:normal;font-size:16px;opacity:0;animation:cdup 7s ease-in infinite}
+@keyframes cdup{0%{transform:translateY(0) scale(.7);opacity:0}15%{opacity:.85}100%{transform:translateY(-200px) scale(1.15);opacity:0}}
+.cdd .in{position:relative}
+.cdsig{display:block;margin-top:8px;font:700 14px Heebo;color:var(--gold2);text-align:left}
+.cdphotos{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
+.cdphotos img{flex:none;width:150px;height:190px;object-fit:cover;border-radius:14px;border:1px solid rgba(212,175,95,.4);scroll-snap-align:start;cursor:zoom-in}
+.cdlight{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:80;display:none;place-items:center;padding:20px}
+.cdlight.on{display:grid}
+.cdlight img{max-width:100%;max-height:86vh;border-radius:14px}
+.cdpop{position:fixed;inset:0;z-index:70;display:none;place-items:center;background:rgba(0,0,0,.7);padding:20px}
+.cdpop.on{display:grid}
+.cdpop .card{max-width:360px;width:100%;background:linear-gradient(160deg,#241d10,#15130f);border:1px solid rgba(212,175,95,.55);border-radius:20px;padding:26px 22px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.cdpop .card .big{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:64px;line-height:1;color:var(--gold2)}
+.cdpop .card p{font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:21px;line-height:1.45;margin:12px 0 4px}
+.cdpop .card button{margin-top:14px;background:var(--gold);color:#1a1408;border:0;border-radius:12px;font:800 15px Heebo;padding:11px 22px;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.cdhearts{display:none}}
 </style>
 </head>
 <body>
@@ -128,6 +212,11 @@ details.it .more ul,details.it .more ol{margin:4px 0 8px}
     <div class="progress" id="prog"><span id="ptext">0 מתוך 16 פרקים</span><div class="bar"><i id="pbar"></i></div></div>
   </div>
 </header>
+<button class="cdbar" id="cdBar" type="button" aria-label="פתיחת הספירה לאחור">
+  <span class="n" id="cdBarN">–</span>
+  <span class="tx"><b id="cdBarL">ימים לבחינה</b><span id="cdBarM"></span></span>
+  <span class="go">לפינה שלך ❤️</span>
+</button>
 
 <main class="wrap">
 <div class="modebar">
@@ -1040,6 +1129,283 @@ details.it .more ul,details.it .more ol{margin:4px 0 8px}
   });
   var savedPane=get(PK); if(savedPane&&document.getElementById(savedPane))setPane(savedPane,true);
   if(location.hash==='#tips'||get(MK)==='tips')setMode('tips',true);
+})();
+</script>
+
+<!-- ===== ספירה לאחור + פינת חיזוקים (מאלעד) ===== -->
+
+
+<div class="cdshade" id="cdShade"></div>
+<aside class="cdd" id="cdD" aria-label="ספירה לאחור לבחינה">
+  <div class="in">
+    <div class="cdhearts" id="cdHearts"></div>
+    <button class="x" id="cdX" type="button" aria-label="סגירה">✕</button>
+    <div class="cdk">הפסיכומטרי שלך · שישי 4.12 · 09:00</div>
+    <div class="cdbig">
+      <div class="num" id="cdNum">–</div>
+      <div class="lab" id="cdLab"></div>
+      <div class="sub" id="cdSub"></div>
+    </div>
+    <div class="cddots" id="cdDots" aria-hidden="true"></div>
+
+    <div class="cdmsg">
+      <p id="cdMsg"></p>
+      <span class="cdsig">אלעד ❤️</span>
+      <button class="more" id="cdMore" type="button">עוד חיזוק ממני ←</button>
+    </div>
+
+    <div class="cdsec" id="cdPhotosSec" hidden>
+      <h4>אנחנו 💛</h4>
+      <div class="cdphotos" id="cdPhotos"></div>
+    </div>
+
+    <div class="cdsec">
+      <h4>המשימה של היום <small id="cdDate"></small></h4>
+      <div class="cdtask" id="cdTask"></div>
+      <label class="cddone"><input type="checkbox" id="cdDone"> סיימתי את המשימה של היום</label>
+    </div>
+
+    <div class="cdelad">
+      <div class="h">אלעד גאה בך 🥹❤️</div>
+      <p>בכל שעה, גם באמצע הלילה. צריכה חיזוק? אני פה.</p>
+      <div class="cdbtns">
+        <a class="call" href="tel:+972532262525"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>להתקשר לאלעד</a>
+        <a class="wa" id="cdWa" href="https://wa.me/972532262525" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>וואטסאפ</a>
+      </div>
+    </div>
+
+    <div class="cdsec">
+      <h4>דקה וחצי של נשימה 🌿 <small>המרכז ממליץ על תרגילי נשימה מול לחץ</small></h4>
+      <div class="cdbreath">
+        <div class="ring" id="cdRing"><span id="cdRingT">מוכנה?</span></div>
+        <button type="button" id="cdBreath">להתחיל</button>
+      </div>
+    </div>
+
+    <div class="cdsec">
+      <h4>מה לוקחים לבחינה 🎒 <small>לפי המרכז</small></h4>
+      <ul class="cdlist" id="cdBag"></ul>
+    </div>
+
+    <div class="cdsec">
+      <h4>9 דברים לזכור בתוך הבחינה ✨</h4>
+      <ol class="cdrem">
+        <li><b>אין קנס על טעות.</b> אף שאלה לא נשארת ריקה, גם אם מנחשים.</li>
+        <li><b>כל שאלה שווה נקודה.</b> קודם הקלות. שאלות מאותו סוג הולכות מקלה לקשה.</li>
+        <li><b>בכמותי, אחרי שאלות התרשים, מתחיל שוב קל.</b> לא נתקעים לפני.</li>
+        <li><b>פרק אחד הוא ניסיוני ולא נספר,</b> ואין דרך לדעת איזה. כל פרק כאילו הוא אמיתי.</li>
+        <li><b>אי אפשר לחזור לפרק קודם</b> או לדלג לפרק הבא.</li>
+        <li><b>הסימון בגיליון נכלל ב-20 הדקות.</b> מסמנים תוך כדי, לא בסוף.</li>
+        <li><b>בכמותי יש דף נוסחאות.</b> מסתכלים בו בלי בושה.</li>
+        <li><b>חיבור: 30 דקות, לפחות 25 שורות.</b> פתיחה, ראשית, שנית, טיעון נגד, סיכום.</li>
+        <li><b>כשעתיים וחצי בלי הפסקה.</b> שירותים רק באישור, והזמן לא נעצר.</li>
+      </ol>
+    </div>
+
+    <div class="cdsrc">העובדות על הבחינה ועל יום הבחינה: מהמרכז הארצי לבחינות ולהערכה (חוברת ההדרכה, שאלות ותשובות והנחיות לנבחנים). ההודעות: מאלעד, באהבה.</div>
+  </div>
+</aside>
+
+<div class="cdpop" id="cdPop" role="dialog" aria-modal="true">
+  <div class="card">
+    <div class="big" id="cdPopN"></div>
+    <div class="cdk" id="cdPopL" style="margin-top:6px"></div>
+    <p id="cdPopM"></p>
+    <span class="cdsig" style="text-align:center">אלעד ❤️</span>
+    <button type="button" id="cdPopX">יאללה, אני עליה 💪</button>
+  </div>
+</div>
+<div class="cdlight" id="cdLight"><img id="cdLightImg" alt=""></div>
+
+<script>
+/* ===== ספירה לאחור + פינת חיזוקים =====
+   הבחינה: שישי 4.12.2026, 09:00 שעון ישראל (= 07:00 UTC, שעון חורף).
+   הימים נספרים לפי התאריך בישראל, לא לפי 24 שעות. */
+(function(){
+  var EXAM_UTC = Date.UTC(2026, 11, 4, 7, 0, 0);
+  var EXAM_DAY = '2026-12-04';
+  var END_UTC = Date.UTC(2026, 11, 4, 10, 30, 0); // בערך שעתיים וחצי של בחינה + הסברים
+  // תמונות: מוסיפים קבצים לתיקייה photos/ ומוסיפים כאן את השמות
+  var PHOTOS = [];
+
+  function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  function ilDate(ms){ return new Date(ms).toLocaleDateString('en-CA', { timeZone: 'Asia/Jerusalem' }); }
+  function dayNum(iso){ var p = iso.split('-'); return Date.UTC(+p[0], +p[1]-1, +p[2]) / 86400000; }
+  function daysLeft(){ return Math.round(dayNum(EXAM_DAY) - dayNum(ilDate(Date.now()))); }
+
+  // הודעה אחת לכל יום, מהיום ועד הבחינה (המפתח = כמה ימים נשארו)
+  var DAILY = {
+    6: 'עוד שישה ימים, ואת כבר עשית את רוב הדרך 💛 כל שעה שישבת על החומר נמצאת איתך. השבוע הזה הוא רק ליטוש.',
+    5: 'היום סימולציה מלאה, כמו ביום האמת. זה לא מבחן עלייך, זה אימון. כל טעות היום היא נקודה שלא תאבדי בשישי 💪',
+    4: 'יום של תחקיר. מי שלומדת מהטעויות שלה מגיעה הכי חזקה. ואת? את בדיוק כזאת ✨',
+    3: 'סימולציה אחרונה! אחרי היום כבר לא מוכיחים כלום לאף אחד. את פשוט מגיעה ועושה את מה שאת יודעת 🌟',
+    2: 'היום רק רענון קל. הראש שלך מלא, עכשיו נותנים לו מקום לנשום 🌿 ותזכרי: אני גאה בך כבר עכשיו, בלי קשר לשום ציון.',
+    1: 'מחר זה קורה 🥹 היום לא לומדים בכלל, ככה המרכז ממליץ. מנוחה, משהו כיף, ולישון מוקדם. את מוכנה יותר ממה שאת מרגישה.',
+    0: 'היום היום שלך 👑 קחי נשימה עמוקה, את אלופה. מה שלמדת לא הולך לשום מקום. אני מחזיק לך אצבעות כל הבוקר ❤️',
+    after: 'סיימת!!! 🎉 אני כל כך גאה בך. היום לא חושבים על שום שאלה, רק נחים וחוגגים אותך 💛'
+  };
+  var EXTRA = [
+    'את אלופה, ואני לא אומר את זה סתם 🏆',
+    'תזכרי כמה רחוק הגעת מהיום הראשון שפתחת את החומר 💛',
+    'גם אם שאלה אחת נתקעת, זו רק נקודה אחת. ממשיכים הלאה, בראש מורם ✨',
+    'אני גאה בך על ההתמדה, לא רק על הציון ❤️',
+    'הלחץ הזה הוא סימן שאכפת לך. וזה בדיוק מה שהופך אותך למיוחדת 🌸',
+    'נושמים. ארבע פנימה, ארבע להחזיק, שש החוצה. את בשליטה 🌿',
+    'את חכמה, את חזקה, ואת הרבה יותר מוכנה ממה שנדמה לך 💪',
+    'כל פרק הוא דף חדש. מה שהיה בפרק הקודם נשאר שם 📄',
+    'לא צריך להיות מושלמת. צריך רק לעשות את הכי טוב שלך, וזה תמיד מספיק לי 💛',
+    'אם קשה עכשיו, תתקשרי. אני פה, תמיד 📞❤️',
+    'את לא לבד בזה. אני איתך בכל שאלה ובכל דקה 🤍',
+    'אין קנס על טעות. אז מנחשים בביטחון וממשיכים 😉',
+    'תזכרי לחייך קצת היום. זה עוזר יותר ממה שחושבים 😊',
+    'את הסיבה שאני מאמין בעבודה קשה. רואים עלייך כמה השקעת 🌟',
+    'בעוד כמה ימים זה מאחורייך, ואת תסתכלי אחורה ותגידי: עשיתי את זה 🥹',
+    'הראש שלך יודע יותר ממה שאת חושבת. תסמכי עליו 🧠✨',
+    'את אלופה. נקודה 💛',
+    'מה שלא יהיה, אני הכי גאה בך בעולם ❤️'
+  ];
+  // משימה לכל יום. "of" = לפי המלצת המרכז הארצי לבחינות ולהערכה
+  var TASK = {
+    6: { t: 'מנוחה ותכנון. עוברים על "כללי הזהב" ועל "מבנה הבחינה" כאן באתר, ובוחרים שעות לשתי סימולציות השבוע.', of: false },
+    5: { t: 'סימולציה מלאה בתנאי אמת: חיבור ועוד 5 פרקים, 20 דקות לכל פרק, תשובות בגיליון, בלי הפסקה. אחר כך תחקיר.', of: true, n: 'המרכז: בשבועיים האחרונים לתרגל בחינות מלאות, לא יותר מאחת ביום, בתנאים דומים ככל האפשר.' },
+    4: { t: 'תחקיר: עוברים על כל טעות מהסימולציה ורושמים למה היא קרתה. ובסוף, חיבור אחד מתוזמן ל-30 דקות עם "נוסחים לחיבור".', of: false },
+    3: { t: 'סימולציה מלאה אחרונה, ואחריה תחקיר קצר. מכאן והלאה לא פותרים בחינות מלאות.', of: true, n: 'המרכז: לא יותר מבחינה אחת ביום, ולעבור עליה אחר כך.' },
+    2: { t: 'רענון קל בלבד: "כללי הזהב", 9 הדברים שבחלונית הזאת, "נוסחים לחיבור". בודקים את הדרך למקום הבחינה ומכינים את התיק.', of: true, n: 'המרכז: לוודא מראש איך מגיעים למקום הבחינה, כדי לא לאחר.' },
+    1: { t: 'לא לומדים בכלל. מנוחה, משהו כיף, התיק מוכן ליד הדלת, ולישון מוקדם.', of: true, n: 'המרכז: "מומלץ שלא ללמוד כלל ביום שלפני הבחינה כדי להגיע לבחינה רעננים ורגועים ככל האפשר".' },
+    0: { t: 'ארוחת בוקר, תעודה מזהה, שני עפרונות, מחק ומחדד. מגיעים מוקדם, מוצאים את האולם ובודקים שהשם ברשימה על הדלת. נכנסים רק כשהמשגיחים מאשרים.', of: true, n: 'לפי הנחיות המרכז לנבחנים.' },
+    after: { t: 'אין משימה. רק לנוח ולהיות גאה בעצמך 💛', of: false }
+  };
+  var BAG = [
+    ['id', 'תעודה מזהה מקורית, זו שאיתה נרשמת (תעודת זהות, רישיון או דרכון). בלי צילומים.', 'must'],
+    ['p2', 'שני עפרונות', 'must'], ['er', 'מחק', 'must'], ['sh', 'מחדד', 'must'],
+    ['sum', 'הזימון לבחינה (מומלץ)', 'rec'],
+    ['food', 'אוכל שלא מרעיש כשאוכלים או פותחים אותו (מומלץ)', 'rec'],
+    ['drink', 'שתייה בבקבוק שקוף בלבד (מומלץ)', 'rec'],
+    ['ear', 'אטמי אוזניים פשוטים מספוג, בלי חוט (מומלץ)', 'rec'],
+    ['wear', 'שכבות לבוש, כי האולם יכול להיות קר או חם (מומלץ)', 'rec'],
+    ['x1', 'אסור: טלפון (גם לא כדי לראות את השעה), מחשבון, שעון חכם או שעון שמצפצף. מכבים ושמים בתיק.', 'no']
+  ];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var D = $('cdD'), shade = $('cdShade');
+  function open(){ D.classList.add('open'); shade.classList.add('on'); }
+  function close(){ D.classList.remove('open'); shade.classList.remove('on'); }
+  $('cdBar').onclick = open; $('cdX').onclick = close; shade.onclick = close;
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { close(); $('cdPop').classList.remove('on'); $('cdLight').classList.remove('on'); } });
+
+  function key(d){ return d < 0 ? 'after' : (d > 6 ? 6 : d); }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function render(){
+    var now = Date.now(), d = daysLeft(), k = key(d);
+    var num, lab, sub, barN, barL;
+    var ms = EXAM_UTC - now, h = Math.floor(ms / 3600000), m = Math.floor((ms % 3600000) / 60000);
+    if (d >= 2) { num = d; lab = 'ימים לבחינה'; sub = 'שישי 4.12 · 09:00'; barN = d; barL = 'ימים לבחינה'; }
+    else if (d === 1) { num = 1; lab = 'הבחינה מחר 🥹'; sub = 'בעוד ' + h + ' שעות ו-' + m + ' דקות'; barN = 1; barL = 'הבחינה מחר'; }
+    else if (d === 0 && now < EXAM_UTC) { num = 'היום'; lab = 'הבחינה היום 👑'; sub = 'מתחילה בעוד ' + h + ':' + pad(m); barN = 'היום'; barL = 'הבחינה היום'; }
+    else if (d === 0 && now < END_UTC) { num = '💪'; lab = 'את בפנים עכשיו'; sub = 'אני מחזיק לך אצבעות כל הזמן'; barN = '💪'; barL = 'בהצלחה!'; k = 0; }
+    else { num = '🎉'; lab = 'סיימת!'; sub = 'אלעד הכי גאה בך'; barN = '🎉'; barL = 'סיימת!'; k = 'after'; }
+    $('cdNum').textContent = num; $('cdLab').textContent = lab; $('cdSub').textContent = sub;
+    $('cdBarN').textContent = barN; $('cdBarL').textContent = barL;
+    $('cdMsg').textContent = DAILY[k]; $('cdBarM').textContent = DAILY[k].split(/[.!]/)[0] + '.';
+    var t = TASK[k];
+    $('cdTask').innerHTML = '';
+    var p = document.createElement('div'); p.textContent = t.t; $('cdTask').appendChild(p);
+    var tag = document.createElement('span'); tag.className = 'tag' + (t.of ? ' of' : '');
+    tag.textContent = t.of ? 'לפי המלצת המרכז' : 'המלצה של אלעד'; $('cdTask').appendChild(tag);
+    if (t.n) { var n = document.createElement('div'); n.style.cssText = 'font-size:12.5px;color:var(--muted);margin-top:6px'; n.textContent = t.n; $('cdTask').appendChild(n); }
+    var today = ilDate(now); $('cdDate').textContent = today.split('-').reverse().slice(0, 2).join('.');
+    var dk = 'cd-done-' + today; $('cdDone').checked = lsGet(dk) === '1';
+    $('cdDone').onchange = function(){ lsSet(dk, this.checked ? '1' : '0'); };
+    // נקודות השבוע האחרון: 6 ימים לפני ועד יום הבחינה
+    var dots = '';
+    for (var i = 6; i >= 0; i--) dots += '<i class="' + (d < i ? 'past' : (d === i ? 'now' : '')) + '"></i>';
+    $('cdDots').innerHTML = dots;
+    return { d: d, k: k, num: num, lab: lab };
+  }
+
+  // עוד חיזוק: לא חוזר על אותה הודעה פעמיים ברצף
+  var last = -1;
+  $('cdMore').onclick = function(){
+    var i; do { i = Math.floor(Math.random() * EXTRA.length); } while (i === last && EXTRA.length > 1);
+    last = i; $('cdMsg').textContent = EXTRA[i]; burst();
+  };
+
+  // לבבות שעולים בראש החלונית
+  var HE = ['❤️', '💛', '🤍', '💕', '✨'];
+  function heart(delay){
+    var s = document.createElement('i');
+    s.textContent = HE[Math.floor(Math.random() * HE.length)];
+    s.style.left = (Math.random() < .5 ? 3 + Math.random() * 16 : 80 + Math.random() * 15) + '%'; // רק בצדדים, לא מעל הטקסט
+    s.style.animationDelay = (delay || 0) + 's';
+    s.style.fontSize = (12 + Math.random() * 10) + 'px';
+    $('cdHearts').appendChild(s);
+    return s;
+  }
+  for (var j = 0; j < 9; j++) heart(j * 0.8);
+  function burst(){
+    for (var b = 0; b < 6; b++) (function(s){ s.style.animationIterationCount = '1'; setTimeout(function(){ s.remove(); }, 8000); })(heart(b * 0.12));
+  }
+
+  // וואטסאפ עם הודעה מוכנה
+  $('cdWa').href = 'https://wa.me/972532262525?text=' + encodeURIComponent('היי אלעד 🥺 צריכה חיזוק קטן לפני הבחינה');
+
+  // התיק לבחינה — הסימונים נשמרים במכשיר
+  var bag = {}; try { bag = JSON.parse(lsGet('cd-bag-v1') || '{}'); } catch(e){}
+  BAG.forEach(function(it){
+    var li = document.createElement('li');
+    if (it[2] === 'no') { li.className = 'no'; li.appendChild(document.createTextNode(it[1])); }
+    else {
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'cdb-' + it[0]; cb.checked = !!bag[it[0]];
+      cb.onchange = function(){ bag[it[0]] = cb.checked; lsSet('cd-bag-v1', JSON.stringify(bag)); };
+      var lb = document.createElement('label'); lb.htmlFor = cb.id; lb.textContent = it[1];
+      if (it[2] === 'must') lb.style.fontWeight = '700';
+      li.appendChild(cb); li.appendChild(lb);
+    }
+    $('cdBag').appendChild(li);
+  });
+
+  // נשימה: 4 שאיפה · 4 החזקה · 6 נשיפה, 6 סבבים
+  var breathing = false;
+  $('cdBreath').onclick = function(){
+    if (breathing) return; breathing = true; this.textContent = 'נושמות...';
+    var ring = $('cdRing'), txt = $('cdRingT'), btn = this, round = 0;
+    function step(){
+      if (round >= 6) { ring.style.transform = 'scale(.62)'; txt.textContent = 'כל הכבוד 💛'; btn.textContent = 'עוד פעם'; breathing = false; return; }
+      round++;
+      ring.style.transitionDuration = '4s'; ring.style.transform = 'scale(1)'; txt.textContent = 'שאיפה';
+      setTimeout(function(){ txt.textContent = 'להחזיק';
+        setTimeout(function(){ ring.style.transitionDuration = '6s'; ring.style.transform = 'scale(.62)'; txt.textContent = 'נשיפה';
+          setTimeout(step, 6000); }, 4000); }, 4000);
+    }
+    step();
+  };
+
+  // תמונות
+  if (PHOTOS.length) {
+    $('cdPhotosSec').hidden = false;
+    PHOTOS.forEach(function(src){
+      var im = document.createElement('img'); im.src = src; im.alt = ''; im.loading = 'lazy';
+      im.onclick = function(){ $('cdLightImg').src = src; $('cdLight').classList.add('on'); };
+      $('cdPhotos').appendChild(im);
+    });
+  }
+  $('cdLight').onclick = function(){ this.classList.remove('on'); };
+
+  var st = render();
+  setInterval(render, 30000);
+
+  // פעם ביום: חלון ברכה עם המספר של היום
+  var popKey = 'cd-pop-' + ilDate(Date.now());
+  if (!lsGet(popKey)) {
+    $('cdPopN').textContent = st.num;
+    $('cdPopL').textContent = st.lab;
+    $('cdPopM').textContent = DAILY[st.k];
+    setTimeout(function(){ $('cdPop').classList.add('on'); }, 700);
+  }
+  $('cdPopX').onclick = function(){ lsSet(popKey, '1'); $('cdPop').classList.remove('on'); };
+  $('cdPop').onclick = function(e){ if (e.target === this) { lsSet(popKey, '1'); this.classList.remove('on'); } };
 })();
 </script>
 </body>
